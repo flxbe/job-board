@@ -1,10 +1,12 @@
+import { renderJob } from "./templates.js";
+
 export default class JobList {
   constructor() {
     this.node = this.createNode();
   }
 
   setJobs(jobs) {
-    const nodes = jobs.map(printJob);
+    const nodes = jobs.map(renderJob);
     this.node.innerHTML = "";
     nodes.map(node => this.node.appendChild(node));
   }
@@ -14,17 +16,4 @@ export default class JobList {
     node.classList += "results-container";
     return node;
   }
-}
-
-function printJob(job) {
-  const jobNode = document.createElement("div");
-  jobNode.classList += "card mb-3";
-
-  jobNode.innerHTML = `
-    <div class="card-header">
-      Job: ${job.type}
-    </div>
-  `;
-
-  return jobNode;
 }

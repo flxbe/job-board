@@ -1,3 +1,5 @@
+import { renderCategoryFilter } from "./templates.js";
+
 export default class FilterContainer {
   constructor(config, onChange) {
     this.config = config;
@@ -26,42 +28,7 @@ class CategoryFilter {
     this.options = options;
     this.onChange = onChange;
 
-    this.createNode();
-  }
-
-  createNode() {
-    this.node = document.createElement("div");
-    this.node.classList += "card";
-
-    let innerHTML = `
-      <div class="card-header">
-        ${this.name}
-      </div> 
-      <div class="card-body">
-    `;
-
-    for (let option of this.options) {
-      innerHTML += `
-      <div class="custom-control custom-checkbox">
-        <input
-          type="checkbox"
-          class="custom-control-input"
-          id="${option}"
-        />
-        <label class="custom-control-label" for="${option}"
-          >${option}</label
-        >
-      </div>
-    `;
-    }
-
-    innerHTML += "</div>";
-
-    this.node.innerHTML = innerHTML;
-
-    this.node
-      .querySelectorAll("input")
-      .forEach(input => (input.onchange = this.onChange));
+    this.node = renderCategoryFilter(name, options, onChange);
   }
 
   getState() {
