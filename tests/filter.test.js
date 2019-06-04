@@ -1,4 +1,4 @@
-import filterJobs from "./src/filter.js";
+import filterJobs from "../src/filter.js";
 
 describe("filtering jobs", () => {
   describe("when every filter is empty", () => {
