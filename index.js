@@ -1,48 +1,44 @@
 import FilterContainer from "./filter-container.js";
 import JobList from "./job-list.js";
+import filterJobs from "./filter.js";
 
 const FILTER_CONFIG = {
-  fulltime: ["fulltime", "parttime", "internship"]
+  type: ["fulltime", "parttime", "internship"]
 };
 
 const JOBS = [
   {
-    fulltime: true
+    type: "fulltime"
   },
   {
-    fulltime: true
+    type: "fulltime"
   },
   {
-    fulltime: false
+    type: "parttime"
+  },
+  {
+    type: "internship"
   }
 ];
 
-let filter = {
-  fulltime: false
-};
-
 function start(node) {
-  const filterContainer = new FilterContainer(FILTER_CONFIG);
-  const jobList = new JobList();
-  const rootNode = initializeRootNode(node, filterContainer.node, jobList.node);
-
   function update() {
-    const filteredJobs = filterJobs(JOBS, filter);
+    const filteredJobs = filterJobs(JOBS, filterContainer.getState());
     jobList.setJobs(filteredJobs);
   }
+
+  const jobList = new JobList();
+  const filterContainer = new FilterContainer(FILTER_CONFIG, update);
+  const rootNode = initializeRootNode(node, filterContainer, jobList);
 
   update();
 }
 
-function initializeRootNode(node, filterNode, jobsNode) {
+function initializeRootNode(node, filterContainer, jobList) {
   node.classList += "jobs-container";
-  node.appendChild(filterNode);
-  node.appendChild(jobsNode);
+  node.appendChild(filterContainer.node);
+  node.appendChild(jobList.node);
   return node;
-}
-
-function filterJobs(jobs, filter) {
-  return jobs.filter(job => job.fulltime == filter.fulltime);
 }
 
 const rootNode = document.getElementById("jobs-root");

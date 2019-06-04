@@ -1,6 +1,8 @@
 export default class FilterContainer {
-  constructor(config) {
-    this.filters = CategoryFilter.fromConfig(config);
+  constructor(config, onChange) {
+    this.config = config;
+    this.onChange = onChange;
+    this.filters = CategoryFilter.fromConfig(config, this.onChange);
     this.node = this.createNode();
   }
 
@@ -10,36 +12,36 @@ export default class FilterContainer {
     this.filters.forEach(filter => node.appendChild(filter.node));
     return node;
   }
-}
 
-class CategoryFilter {
-  constructor(name, options) {
-    this.name = name;
-    this.options = options;
-
-    this.node = createFilterNode(name, options);
+  getState() {
+    const state = {};
+    this.filters.forEach(filter => (state[filter.name] = filter.getState()));
+    return state;
   }
 }
 
-CategoryFilter.fromConfig = function(config) {
-  return Object.entries(config).map(
-    ([name, options]) => new CategoryFilter(name, options)
-  );
-};
+class CategoryFilter {
+  constructor(name, options, onChange) {
+    this.name = name;
+    this.options = options;
+    this.onChange = onChange;
 
-function createFilterNode(name, options) {
-  const node = document.createElement("div");
-  node.classList += "card";
+    this.createNode();
+  }
 
-  let innerHTML = `
-    <div class="card-header">
-      ${name}
-    </div> 
-    <div class="card-body">
-  `;
+  createNode() {
+    this.node = document.createElement("div");
+    this.node.classList += "card";
 
-  for (let option of options) {
-    innerHTML += `
+    let innerHTML = `
+      <div class="card-header">
+        ${this.name}
+      </div> 
+      <div class="card-body">
+    `;
+
+    for (let option of this.options) {
+      innerHTML += `
       <div class="custom-control custom-checkbox">
         <input
           type="checkbox"
@@ -51,14 +53,31 @@ function createFilterNode(name, options) {
         >
       </div>
     `;
+    }
+
+    innerHTML += "</div>";
+
+    this.node.innerHTML = innerHTML;
+
+    this.node
+      .querySelectorAll("input")
+      .forEach(input => (input.onchange = this.onChange));
   }
 
-  innerHTML += "</div>";
+  getState() {
+    const state = Array.from(this.node.querySelectorAll("input"))
+      .filter(node => node.checked)
+      .map(node => node.id);
 
-  node.innerHTML = innerHTML;
-
-  return node;
+    return state;
+  }
 }
+
+CategoryFilter.fromConfig = function(config, onUpdate) {
+  return Object.entries(config).map(
+    ([name, options]) => new CategoryFilter(name, options, onUpdate)
+  );
+};
 
 function createFilterContainerNode() {
   const node = document.createElement("div");
