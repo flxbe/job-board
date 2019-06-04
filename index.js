@@ -1,45 +1,25 @@
-import FilterContainer from "./filter-container.js";
-import JobList from "./job-list.js";
-import filterJobs from "./filter.js";
+import start from "./src/lib.js";
 
-const FILTER_CONFIG = {
-  type: ["fulltime", "parttime", "internship"]
-};
+const filters = ["type", "location"];
 
-const JOBS = [
+const jobs = [
   {
-    type: "fulltime"
+    type: "fulltime",
+    location: "Magdeburg"
   },
   {
-    type: "fulltime"
+    type: "fulltime",
+    location: "Braunschweig"
   },
   {
-    type: "parttime"
+    type: "parttime",
+    location: "Magdeburg"
   },
   {
-    type: "internship"
+    type: "internship",
+    location: "Hannover"
   }
 ];
 
-function start(node) {
-  function update() {
-    const filteredJobs = filterJobs(JOBS, filterContainer.getState());
-    jobList.setJobs(filteredJobs);
-  }
-
-  const jobList = new JobList();
-  const filterContainer = new FilterContainer(FILTER_CONFIG, update);
-  const rootNode = initializeRootNode(node, filterContainer, jobList);
-
-  update();
-}
-
-function initializeRootNode(node, filterContainer, jobList) {
-  node.classList += "jobs-container";
-  node.appendChild(filterContainer.node);
-  node.appendChild(jobList.node);
-  return node;
-}
-
-const rootNode = document.getElementById("jobs-root");
-start(rootNode);
+const root = document.getElementById("jobs-root");
+mount(root, filters, jobs);

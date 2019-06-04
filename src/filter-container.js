@@ -73,9 +73,9 @@ class CategoryFilter {
   }
 }
 
-CategoryFilter.fromConfig = function(config, onUpdate) {
-  return Object.entries(config).map(
-    ([name, options]) => new CategoryFilter(name, options, onUpdate)
+CategoryFilter.fromConfig = function(config, onChange) {
+  return config.map(
+    ({ name, options }) => new CategoryFilter(name, options, onChange)
   );
 };
 
