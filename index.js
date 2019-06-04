@@ -7,24 +7,28 @@ const filters = ["name", "type", "location"];
 
 const jobs = [
   {
+    id: 1,
     name: "Software Entwickler/in",
     type: "fulltime",
     location: "Magdeburg",
     description: loremIpsum
   },
   {
+    id: 2,
     name: "Maschinenbauingenieur/in",
     type: "fulltime",
     location: "Braunschweig",
     description: loremIpsum
   },
   {
+    id: 3,
     name: "Software Entwickler/in",
     type: "parttime",
     location: "Magdeburg",
     description: loremIpsum
   },
   {
+    id: 4,
     name: "Designer/in",
     type: "internship",
     location: "Hannover",

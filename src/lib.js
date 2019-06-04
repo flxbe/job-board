@@ -1,19 +1,35 @@
-import FilterContainer from "./filter-container.js";
-import JobList from "./job-list.js";
-import filterJobs from "./filter.js";
+import FilterView from "./filter-view.js";
+import JobView from "./job-view.js";
 
 export default function mount(node, filters, jobs) {
-  function update() {
-    const filteredJobs = filterJobs(jobs, filterContainer.getState());
-    jobList.setJobs(filteredJobs);
+  const filterConfig = getFilterConfig(jobs, filters);
+
+  function onUpdateFilters(newFilters) {
+    console.log(newFilters);
   }
 
-  const filterConfig = getFilterConfig(jobs, filters);
-  const jobList = new JobList();
-  const filterContainer = new FilterContainer(filterConfig, update);
-  const rootNode = initializeRootNode(node, filterContainer, jobList);
+  function mountFilterView() {
+    const view = new FilterView(
+      filterConfig,
+      jobs,
+      onUpdateFilters,
+      mountJobView
+    );
+    mountView(view);
+  }
 
-  update();
+  function mountJobView(id) {
+    const job = jobs.find(job => job.id == id);
+    const view = new JobView(job, mountFilterView);
+    mountView(view);
+  }
+
+  function mountView(view) {
+    node.innerHTML = "";
+    node.appendChild(view.node);
+  }
+
+  mountFilterView();
 }
 
 function getFilterConfig(jobs, filters) {
@@ -30,11 +46,4 @@ function extractFilterConfig(jobs) {
 function getUniqueCategories(jobs, filterName) {
   const categories = jobs.map(job => job[filterName]);
   return [...new Set(categories)];
-}
-
-function initializeRootNode(node, filterContainer, jobList) {
-  node.classList += "jobs-container";
-  node.appendChild(filterContainer.node);
-  node.appendChild(jobList.node);
-  return node;
 }

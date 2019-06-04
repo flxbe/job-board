@@ -1,6 +1,8 @@
-export function renderJob(job) {
+export function renderJob(job, onSelect) {
   const node = document.createElement("div");
   node.classList += "card mb-3";
+  node.style.cursor = "pointer";
+  node.onclick = onSelect;
 
   node.innerHTML = `
     <div class="card-body">
