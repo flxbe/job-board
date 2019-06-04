@@ -14,6 +14,20 @@ describe("filtering jobs", () => {
       expect(filteredJobs).toEqual(jobs);
     });
   });
+
+  describe("when the job array is empty", () => {
+    test("should return no job", () => {
+      const jobs = [];
+      const filters = {
+        name: [],
+        location: []
+      };
+
+      const filteredJobs = filterJobs(jobs, filters);
+
+      expect(filteredJobs).toHaveLength(0);
+    });
+  });
 });
 
 function createJob() {
