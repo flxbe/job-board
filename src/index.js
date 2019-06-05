@@ -1,40 +1,49 @@
-import mount from "./lib.js";
+import FilterView from "./filter-view.js";
+import JobView from "./job-view.js";
 
-const loremIpsum =
-  "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
+export function mount(node, filters, jobs) {
+  const filterConfig = getFilterConfig(jobs, filters);
 
-const filters = ["name", "type", "location"];
-
-const jobs = [
-  {
-    id: 1,
-    name: "Software Entwickler/in",
-    type: "fulltime",
-    location: "Magdeburg",
-    description: loremIpsum
-  },
-  {
-    id: 2,
-    name: "Maschinenbauingenieur/in",
-    type: "fulltime",
-    location: "Braunschweig",
-    description: loremIpsum
-  },
-  {
-    id: 3,
-    name: "Software Entwickler/in",
-    type: "parttime",
-    location: "Magdeburg",
-    description: loremIpsum
-  },
-  {
-    id: 4,
-    name: "Designer/in",
-    type: "internship",
-    location: "Hannover",
-    description: loremIpsum
+  function onUpdateFilters(newFilters) {
+    console.log(newFilters);
   }
-];
 
-const root = document.getElementById("jobs-root");
-mount(root, filters, jobs);
+  function mountFilterView() {
+    const view = new FilterView(
+      filterConfig,
+      jobs,
+      onUpdateFilters,
+      mountJobView
+    );
+    mountView(view);
+  }
+
+  function mountJobView(id) {
+    const job = jobs.find(job => job.id == id);
+    const view = new JobView(job, mountFilterView);
+    mountView(view);
+  }
+
+  function mountView(view) {
+    node.innerHTML = "";
+    node.appendChild(view.node);
+  }
+
+  mountFilterView();
+}
+
+function getFilterConfig(jobs, filters) {
+  return filters.map(extractFilterConfig(jobs));
+}
+
+function extractFilterConfig(jobs) {
+  return filterName => ({
+    name: filterName,
+    options: getUniqueCategories(jobs, filterName)
+  });
+}
+
+function getUniqueCategories(jobs, filterName) {
+  const categories = jobs.map(job => job[filterName]);
+  return [...new Set(categories)];
+}

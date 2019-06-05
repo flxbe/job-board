@@ -1,16 +1,15 @@
 {
-  "name": "jobs",
-  "version": "1.0.0",
+  "name": "job-board",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
-  "type": "module",
+  "main": "dist/job-board.js",
   "scripts": {
     "test": "jest",
     "build": "webpack",
     "watch": "webpack --watch"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Felix Bernhardt",
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "webpack": "^4.33.0",
