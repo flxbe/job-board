@@ -1,30 +1,8 @@
-import mount from "../src/lib.js";
-import { exportAllDeclaration } from "@babel/types";
+import { mountJobBoard, getFilterContainer, getJobList } from "./page";
 
-const filters = ["type", "location"];
-
-const jobs = [
-  {
-    type: "fulltime",
-    location: "Magdeburg"
-  },
-  {
-    type: "fulltime",
-    location: "Braunschweig"
-  },
-  {
-    type: "parttime",
-    location: "Magdeburg"
-  },
-  {
-    type: "internship",
-    location: "Hannover"
-  }
-];
-
-describe("mounting the job filter", () => {
+describe("Mounting the job filter", () => {
   test("should add the filter to the DOM", () => {
-    const node = mountJobFilter();
+    const node = mountJobBoard();
 
     const filterContainerNode = getFilterContainer(node);
 
@@ -32,24 +10,10 @@ describe("mounting the job filter", () => {
   });
 
   test("should add the job list to the DOM", () => {
-    const node = mountJobFilter();
+    const node = mountJobBoard();
 
     const jobListNode = getJobList(node);
 
     expect(jobListNode).not.toBeNull();
   });
 });
-
-function mountJobFilter() {
-  const node = document.createElement("div");
-  mount(node, filters, jobs);
-  return node;
-}
-
-function getFilterContainer(node) {
-  return node.querySelector("#job-board-filter-container");
-}
-
-function getJobList(node) {
-  return node.querySelector("#job-board-job-list");
-}

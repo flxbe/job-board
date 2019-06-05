@@ -4,9 +4,7 @@ import JobView from "./job-view.js";
 export function mount(node, filters, jobs) {
   const filterConfig = getFilterConfig(jobs, filters);
 
-  function onUpdateFilters(newFilters) {
-    console.log(newFilters);
-  }
+  function onUpdateFilters(newFilters) {}
 
   function mountFilterView() {
     const view = new FilterView(
@@ -37,13 +35,14 @@ function getFilterConfig(jobs, filters) {
 }
 
 function extractFilterConfig(jobs) {
-  return filterName => ({
-    name: filterName,
-    options: getUniqueCategories(jobs, filterName)
+  return ({ key, title }) => ({
+    key,
+    title,
+    options: getUniqueCategories(jobs, key)
   });
 }
 
-function getUniqueCategories(jobs, filterName) {
-  const categories = jobs.map(job => job[filterName]);
+function getUniqueCategories(jobs, key) {
+  const categories = jobs.map(job => job[key]);
   return [...new Set(categories)];
 }

@@ -20,18 +20,19 @@ export default class FilterContainer {
 
   getState() {
     const state = {};
-    this.filters.forEach(filter => (state[filter.name] = filter.getState()));
+    this.filters.forEach(
+      filter => (state[filter.config.key] = filter.getState())
+    );
     return state;
   }
 }
 
 class CategoryFilter {
-  constructor(name, options, onChange) {
-    this.name = name;
-    this.options = options;
+  constructor(config, onChange) {
+    this.config = config;
     this.onChange = onChange;
 
-    this.node = renderCategoryFilter(name, options, onChange);
+    this.node = renderCategoryFilter(config.title, config.options, onChange);
   }
 
   getState() {
@@ -44,13 +45,5 @@ class CategoryFilter {
 }
 
 CategoryFilter.fromConfig = function(config, onChange) {
-  return config.map(
-    ({ name, options }) => new CategoryFilter(name, options, onChange)
-  );
+  return config.map(filterConfig => new CategoryFilter(filterConfig, onChange));
 };
-
-function createFilterContainerNode() {
-  const node = document.createElement("div");
-  node.classList += "filter-container";
-  return node;
-}

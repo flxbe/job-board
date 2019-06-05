@@ -44,14 +44,12 @@ export function renderJob(job, onSelect) {
   return node;
 }
 
-export function renderCategoryFilter(name, options, onChange) {
+export function renderCategoryFilter(title, options, onChange) {
   const node = document.createElement("div");
   node.classList += "card mb-3";
 
   let innerHTML = `
-      <div class="card-header">
-        ${name}
-      </div> 
+      <div class="card-header">${title}</div> 
       <div class="card-body">
     `;
 
