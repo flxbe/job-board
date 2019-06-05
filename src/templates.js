@@ -26,7 +26,7 @@ export function renderDetailedJob(job, onGoBack) {
 
 export function renderJob(job, onSelect) {
   const node = document.createElement("div");
-  node.classList += "card mb-3";
+  node.classList += "shadow-sm card mb-5";
   node.style.cursor = "pointer";
   node.onclick = onSelect;
 
