@@ -28,7 +28,7 @@ describe("mounting the job filter", () => {
 
     const filterContainerNode = getFilterContainer(node);
 
-    expect(filterContainerNode).toBeDefined();
+    expect(filterContainerNode).not.toBeNull();
   });
 
   test("should add the job list to the DOM", () => {
@@ -36,7 +36,7 @@ describe("mounting the job filter", () => {
 
     const jobListNode = getJobList(node);
 
-    expect(jobListNode).toBeDefined();
+    expect(jobListNode).not.toBeNull();
   });
 });
 
@@ -47,9 +47,9 @@ function mountJobFilter() {
 }
 
 function getFilterContainer(node) {
-  return node.querySelector(".filter-container");
+  return node.querySelector("#job-board-filter-container");
 }
 
 function getJobList(node) {
-  return node.querySelector(".results-container");
+  return node.querySelector("#job-board-job-list");
 }

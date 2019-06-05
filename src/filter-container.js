@@ -10,8 +10,11 @@ export default class FilterContainer {
 
   createNode() {
     const node = document.createElement("div");
-    node.classList += "filter-container";
+    node.classList += "col-md-3";
+    node.id = "job-board-filter-container";
+
     this.filters.forEach(filter => node.appendChild(filter.node));
+
     return node;
   }
 

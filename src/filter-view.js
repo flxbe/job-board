@@ -31,7 +31,9 @@ export default class FilterView {
 
   render() {
     this.node = document.createElement("div");
-    this.node.classList += "jobs-container";
+    this.node.id = "job-board-filter-view";
+    this.node.classList += "row";
+
     this.node.appendChild(this.filterContainer.node);
     this.node.appendChild(this.jobList.node);
 

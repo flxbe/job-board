@@ -14,7 +14,8 @@ export default class JobList {
 
   createNode() {
     const node = document.createElement("div");
-    node.classList += "results-container";
+    node.classList += "col-md-9";
+    node.id = "job-board-job-list";
     return node;
   }
 
