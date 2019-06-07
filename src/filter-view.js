@@ -3,7 +3,7 @@ import JobList from "./job-list.js";
 import filterJobs from "./filter.js";
 
 export default class FilterView {
-  constructor(filterConfig, jobs, onUpdateFilter, onSelectJob) {
+  constructor({ filterConfig, jobs, onUpdateFilter, onSelectJob }) {
     this.filterConfig = filterConfig;
     this.jobs = jobs;
     this.onUpdateFilter = onUpdateFilter;

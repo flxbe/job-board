@@ -34,18 +34,21 @@ export function mount(node, filters, jobs) {
   }
 
   function mountFilterView() {
-    const view = new FilterView(
+    const view = new FilterView({
       filterConfig,
       jobs,
-      onUpdateFilters,
-      selectJob
-    );
+      onUpdateFilter: onUpdateFilters,
+      onSelectJob: selectJob
+    });
     mountView(view);
   }
 
   function mountJobView(id) {
     const job = jobs.find(job => job.id == id);
-    const view = new JobView(job, goToFilterView);
+    const view = new JobView({
+      job,
+      onGoBack: goToFilterView
+    });
     mountView(view);
   }
 
@@ -90,8 +93,8 @@ function parseQuery(queryString) {
 
   const query = {};
   for (var i = 0; i < pairs.length; i++) {
-      var pair = pairs[i].split('=');
-      query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+    var pair = pairs[i].split("=");
+    query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || "");
   }
 
   return query;
