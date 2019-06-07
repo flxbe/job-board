@@ -13,3 +13,21 @@ function validateJob(job) {
 function isTrue(value) {
   return value === true;
 }
+
+
+export function getFilterConfig(jobs, filters) {
+  return filters.map(extractFilterConfig(jobs));
+}
+
+function extractFilterConfig(jobs) {
+  return ({ key, title }) => ({
+    key,
+    title,
+    options: getUniqueCategories(jobs, key)
+  });
+}
+
+function getUniqueCategories(jobs, key) {
+  const categories = jobs.map(job => job[key]);
+  return [...new Set(categories)];
+}

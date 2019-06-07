@@ -19,7 +19,10 @@ export function renderDetailedJob(job, onGoBack) {
       <div>
     `;
 
-  node.querySelector("a").onclick = onGoBack;
+  node.querySelector("a").onclick = () => {
+    onGoBack();
+    return false;
+  };
 
   return node;
 }
