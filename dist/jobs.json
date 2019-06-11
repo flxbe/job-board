@@ -1,0 +1,49 @@
+{
+  "filters": [
+    {
+      "key": "department",
+      "title": "Abteilung"
+    },
+    {
+      "key": "type",
+      "title": "Typ"
+    }
+  ],
+  "jobs": [
+    {
+      "id": 1,
+      "title": "Verfahrensmechaniker (m/w/x) für Kunststoff- und Kautschuktechnik (Schwerpunkt Bauteile)",
+      "location": "Magdeburg",
+      "description": "loremIpsum",
+
+      "type": "Vollzeit",
+      "department": "Fertigung"
+    },
+    {
+      "id": 2,
+      "title": "Ausbildung zum/zur Verfahrensmechaniker/in für Kunststoff- und Kautschuktechnik (Schwerpunkt Bauteile)",
+      "location": "Magdeburg",
+      "description": "loremIpsum",
+      "type": "Ausbildung",
+      "department": "Fertigung"
+    },
+    {
+      "id": 3,
+      "title": "Maler/in und Lackierer/in",
+      "location": "Magdeburg",
+      "description": "loremIpsum",
+
+      "type": "Vollzeit",
+      "department": "Fertigung"
+    },
+    {
+      "id": 4,
+      "title": "Bereichsleiter Kundendienst (m/w/x)",
+      "location": "Magdeburg",
+      "description": "loremIpsum",
+
+      "type": "Vollzeit",
+      "department": "Service"
+    }
+  ]
+}

@@ -4,7 +4,8 @@ import JobView from "./job-view.js";
 
 const QUERY_PARAMETR = "job_id";
 
-export function mount(node, filters, jobs) {
+export async function mount(node, options = {}) {
+  const { jobs, filters } = await loadData(options);
   const filterConfig = getFilterConfig(jobs, filters);
 
   window.addEventListener("popstate", event => {
@@ -58,6 +59,24 @@ export function mount(node, filters, jobs) {
   }
 
   render(window.location);
+}
+
+async function loadData({ source, jobs, filters }) {
+  if (source) {
+    return loadJSON(source);
+  } else {
+    return { jobs, filters };
+  }
+}
+
+async function loadJSON(source) {
+  const response = await fetch(source);
+
+  if (!response.ok) {
+    throw new Error("HTTP error " + response.status);
+  }
+
+  return response.json();
 }
 
 const FILTER = 0;

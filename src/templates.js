@@ -8,9 +8,8 @@ export function renderDetailedJob(job, onGoBack) {
         </nav>
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">${job.name}</h5>
+            <h5 class="card-title">${job.title}</h5>
             <h6 class="card-subtitle mb-2 text-muted">
-              ${job.type} in 
               ${job.location}
             </h6>
             <p class="card-text">${job.description}</p>
@@ -29,15 +28,14 @@ export function renderDetailedJob(job, onGoBack) {
 
 export function renderJob(job, onSelect) {
   const node = document.createElement("div");
-  node.classList += "shadow-sm card mb-5";
+  node.classList += "shadow-sm card mb-4";
   node.style.cursor = "pointer";
   node.onclick = onSelect;
 
   node.innerHTML = `
     <div class="card-body">
-      <h5 class="card-title">${job.name}</h5>
+      <h5 class="card-title">${job.title}</h5>
       <h6 class="card-subtitle mb-2 text-muted">
-        ${job.type} in 
         ${job.location}
       </h6>
       <p class="card-text">${job.description}</p>
@@ -49,7 +47,7 @@ export function renderJob(job, onSelect) {
 
 export function renderCategoryFilter(title, options, onChange) {
   const node = document.createElement("div");
-  node.classList += "card mb-3";
+  node.classList += "card mb-4";
 
   let innerHTML = `
       <div class="card-header">${title}</div> 

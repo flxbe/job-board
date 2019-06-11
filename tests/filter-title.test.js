@@ -8,8 +8,8 @@ describe("Specifying a header title", () => {
     }
   ];
 
-  test("should render the correct filter title", () => {
-    const board = mountJobBoard({ filters });
+  test("should render the correct filter title", async () => {
+    const board = await mountJobBoard({ filters });
 
     const filterNodes = getFilterNodes(board);
     const title = getFilterTitle(filterNodes[0]);
