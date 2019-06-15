@@ -1,12 +1,8 @@
-.jb-shadow-sm {
-  box-shadow: $box-shadow-sm !important;
-}
-.jb-shadow {
-  box-shadow: $box-shadow !important;
-}
-.jb-shadow-lg {
-  box-shadow: $box-shadow-lg !important;
-}
-.jb-shadow-none {
-  box-shadow: none !important;
+@each $box-shadow, $value in $box-shadows {
+  .jb-#{$box-shadow} {
+    box-shadow: $value !important;
+  }
+  .jb-#{$box-shadow}-hover:hover {
+    box-shadow: $value !important;
+  }
 }

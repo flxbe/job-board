@@ -28,7 +28,8 @@ export function renderDetailedJob(job, onGoBack) {
 
 export function renderJob(job, onSelect) {
   const node = document.createElement("div");
-  node.classList += "jb-shadow rounded jb-mb-4 text-dark";
+  node.classList +=
+    "jb-shadow-sm jb-shadow-hover jb-transition-base rounded jb-mb-4";
   node.style.cursor = "pointer";
   node.onclick = onSelect;
 

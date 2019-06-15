@@ -53,9 +53,16 @@ $border-width: 1px;
 $border-color: $dark;
 $border-radius: 0.25rem;
 
-$box-shadow-sm: 0 0.125rem 0.25rem rgba($black, 0.075);
+$box-shadow-sm: 0 0.125rem 0.5rem rgba($black, 0.1);
 $box-shadow: 0 0.5rem 1rem rgba($black, 0.15);
 $box-shadow-lg: 0 1rem 3rem rgba($black, 0.175);
+
+$box-shadows: (
+  shadow-none: none,
+  shadow-sm: $box-shadow-sm,
+  shadow: $box-shadow,
+  shadow-lg: $box-shadow-lg
+);
 
 $transition-base: all 0.2s ease-in-out;
 $transition-fade: opacity 0.15s linear;
