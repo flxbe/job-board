@@ -1,7 +1,7 @@
-$columns: 12;
-$gutter: 30px;
-$breakpoints: $jb-grid-breakpoints;
-$max-widths: $jb-container-max-widths;
+$columns: $grid-columns;
+$gutter: $grid-gutter;
+$breakpoints: $grid-breakpoints;
+$max-widths: $container-max-widths;
 
 .jb-container {
   width: 100%;

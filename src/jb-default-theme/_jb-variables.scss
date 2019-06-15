@@ -1,4 +1,4 @@
-$jb-grid-breakpoints: (
+$grid-breakpoints: (
   xs: 0,
   sm: 576px,
   md: 768px,
@@ -6,9 +6,29 @@ $jb-grid-breakpoints: (
   xl: 1200px
 );
 
-$jb-container-max-widths: (
+$container-max-widths: (
   sm: 540px,
   md: 720px,
   lg: 960px,
   xl: 1140px
+);
+$grid-columns: 12;
+$grid-gutter: 30px;
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: (
+    $spacer * 0.25
+  ),
+  2: (
+    $spacer * 0.5
+  ),
+  3: $spacer,
+  4: (
+    $spacer * 1.5
+  ),
+  5: (
+    $spacer * 3
+  )
 );

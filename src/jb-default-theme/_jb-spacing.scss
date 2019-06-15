@@ -1,0 +1,51 @@
+$breakpoints: $grid-breakpoints;
+
+@each $prop, $abbrev in (margin: m, padding: p) {
+  @each $size, $length in $spacers {
+    .jb-#{$abbrev}-#{$size} {
+      #{$prop}: $length !important;
+    }
+    .jb-#{$abbrev}t-#{$size},
+    .jb-#{$abbrev}y-#{$size} {
+      #{$prop}-top: $length !important;
+    }
+    .jb-#{$abbrev}r-#{$size},
+    .jb-#{$abbrev}x-#{$size} {
+      #{$prop}-right: $length !important;
+    }
+    .jb-#{$abbrev}b-#{$size},
+    .jb-#{$abbrev}y-#{$size} {
+      #{$prop}-bottom: $length !important;
+    }
+    .jb-#{$abbrev}l-#{$size},
+    .jb-#{$abbrev}x-#{$size} {
+      #{$prop}-left: $length !important;
+    }
+  }
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  @each $prop, $abbrev in (margin: m, padding: p) {
+    @each $size, $length in $spacers {
+      .jb-#{$abbrev}-#{$breakpoint}-#{$size} {
+        #{$prop}: $length !important;
+      }
+      .jb-#{$abbrev}t-#{$breakpoint}-#{$size},
+      .jb-#{$abbrev}y-#{$breakpoint}-#{$size} {
+        #{$prop}-top: $length !important;
+      }
+      .jb-#{$abbrev}r-#{$breakpoint}-#{$size},
+      .jb-#{$abbrev}x-#{$breakpoint}-#{$size} {
+        #{$prop}-right: $length !important;
+      }
+      .jb-#{$abbrev}b-#{$breakpoint}-#{$size},
+      .jb-#{$abbrev}y-#{$breakpoint}-#{$size} {
+        #{$prop}-bottom: $length !important;
+      }
+      .jb-#{$abbrev}l-#{$breakpoint}-#{$size},
+      .jb-#{$abbrev}x-#{$breakpoint}-#{$size} {
+        #{$prop}-left: $length !important;
+      }
+    }
+  }
+}
