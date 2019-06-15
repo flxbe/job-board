@@ -13,6 +13,7 @@
     {
       "id": 1,
       "title": "Verfahrensmechaniker (m/w/x) für Kunststoff- und Kautschuktechnik (Schwerpunkt Bauteile)",
+      "company": "Kunststoff GmBH",
       "location": "Magdeburg",
       "description": "loremIpsum",
 
@@ -23,6 +24,7 @@
       "id": 2,
       "title": "Ausbildung zum/zur Verfahrensmechaniker/in für Kunststoff- und Kautschuktechnik (Schwerpunkt Bauteile)",
       "location": "Magdeburg",
+      "company": "Kunststoff GmBH",
       "description": "loremIpsum",
       "type": "Ausbildung",
       "department": "Fertigung"
@@ -30,6 +32,7 @@
     {
       "id": 3,
       "title": "Maler/in und Lackierer/in",
+      "company": "Maler Mayer",
       "location": "Magdeburg",
       "description": "loremIpsum",
 
@@ -39,6 +42,7 @@
     {
       "id": 4,
       "title": "Bereichsleiter Kundendienst (m/w/x)",
+      "company": "CityCom GmBH",
       "location": "Magdeburg",
       "description": "loremIpsum",
 
