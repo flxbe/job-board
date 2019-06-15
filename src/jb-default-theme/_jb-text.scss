@@ -1,0 +1,22 @@
+@each $color-name, $color-value in $colors {
+  @each $prop, $abbrev in (color: text, background-color: bg) {
+    .#{$abbrev}-#{$color-name} {
+      #{$prop}: $color-value !important;
+    }
+  }
+}
+
+@for $i from 1 to 10 {
+  .font-weight-#{$i}00 {
+    font-weight: $i * 100 !important;
+  }
+}
+.font-weight-light {
+  font-weight: 300 !important;
+}
+.font-weight-normal {
+  font-weight: 400 !important;
+}
+.font-weight-bold {
+  font-weight: 700 !important;
+}

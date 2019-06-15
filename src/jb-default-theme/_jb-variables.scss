@@ -32,3 +32,19 @@ $spacers: (
     $spacer * 3
   )
 );
+
+$primary: #1aa6b7;
+$secondary: gray;
+$light: #d9ecf2;
+$dark: #002d40;
+$white: white;
+$black: black;
+
+$colors: (
+  primary: $primary,
+  secondary: $secondary,
+  light: $light,
+  dark: $dark,
+  white: $white,
+  black: $black
+);
