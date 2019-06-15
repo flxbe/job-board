@@ -48,3 +48,15 @@ $colors: (
   white: $white,
   black: $black
 );
+
+$border-width: 1px;
+$border-color: $dark;
+$border-radius: 0.25rem;
+
+$box-shadow-sm: 0 0.125rem 0.25rem rgba($black, 0.075);
+$box-shadow: 0 0.5rem 1rem rgba($black, 0.15);
+$box-shadow-lg: 0 1rem 3rem rgba($black, 0.175);
+
+$transition-base: all 0.2s ease-in-out;
+$transition-fade: opacity 0.15s linear;
+$transition-collapse: height 0.35s ease;
