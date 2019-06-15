@@ -4,8 +4,8 @@
   "description": "",
   "main": "dist/job-board.js",
   "scripts": {
-    "test": "npm run sass && npm run js",
-    "build": "webpack",
+    "test": "jest",
+    "build": "npm run sass && npm run js",
     "js": "webpack",
     "js:watch": "webpack --watch",
     "sass": "node-sass --source-map true src/jb-default-theme.scss dist/jb-default-theme.css",
