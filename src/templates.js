@@ -29,13 +29,13 @@ export function renderDetailedJob(job, onGoBack) {
 export function renderJob(job, onSelect) {
   const node = document.createElement("div");
   node.classList +=
-    "jb-shadow-sm jb-shadow-hover jb-transition-base rounded jb-mb-4";
+    "jb-shadow-sm jb-shadow-hover jb-transition-base jb-rounded jb-mb-4";
   node.style.cursor = "pointer";
   node.onclick = onSelect;
 
   node.innerHTML = `
     <div class="jb-p-3">
-      <h4 class="jb-text-secondary jb-font-weight-light">${job.title}</h4>
+      <h4 class="jb-text-primary jb-font-weight-light">${job.title}</h4>
       <h5 class="jb-text-dark jb-font-weight-normal jb-mb-2">
         ${job.company},
         <span class="jb-ml-1 jb-font-weight-light">${job.location}</span>
@@ -50,11 +50,13 @@ export function renderJob(job, onSelect) {
 
 export function renderCategoryFilter(title, options, onChange) {
   const node = document.createElement("div");
-  node.classList += "card mb-4";
+  node.classList += "jb-shadow-sm jb-rounded jb-mb-4";
 
   let innerHTML = `
-      <div class="card-header">${title}</div> 
-      <div class="card-body">
+      <div class="jb-p-3 jb-bg-light jb-rounded-top">
+        <h5 class="jb-text-dark jb-font-weight-light jb-mb-0">${title}</h5>
+      </div> 
+      <div class="jb-p-3">
     `;
 
   for (let option of options) {
@@ -65,7 +67,7 @@ export function renderCategoryFilter(title, options, onChange) {
           class="custom-control-input"
           id="${option}"
         />
-        <label class="custom-control-label" for="${option}"
+        <label class="custom-control-label jb-text-dark jb-font-weight-light" for="${option}"
           >${option}</label
         >
       </div>
