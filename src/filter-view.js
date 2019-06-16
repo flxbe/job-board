@@ -32,10 +32,15 @@ export default class FilterView {
   render() {
     this.node = document.createElement("div");
     this.node.id = "job-board-filter-view";
-    this.node.classList += "jb-row";
+    this.node.classList.add("jb-container");
 
-    this.node.appendChild(this.filterContainer.node);
-    this.node.appendChild(this.jobList.node);
+    const row = document.createElement("div");
+    row.classList.add("jb-row");
+
+    row.appendChild(this.filterContainer.node);
+    row.appendChild(this.jobList.node);
+
+    this.node.appendChild(row);
 
     this.updateResults();
   }
