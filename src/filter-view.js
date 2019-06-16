@@ -11,7 +11,7 @@ export default class FilterView {
 
     this._handleFilterUpdate = () => this.updateResults();
 
-    this.jobList = new JobList(onSelectJob);
+    this.jobList = new JobList(filterConfig, onSelectJob);
 
     this.filterContainer = new FilterContainer(
       filterConfig,

@@ -1,7 +1,8 @@
 import { renderJob } from "./templates.js";
 
 export default class JobList {
-  constructor(onSelectJob) {
+  constructor(filterConfig, onSelectJob) {
+    this.filterConfig = filterConfig;
     this.onSelectJob = onSelectJob;
     this.node = this.createNode();
   }
@@ -20,7 +21,7 @@ export default class JobList {
   }
 
   renderJob(job) {
-    return renderJob(job, this.selectJob(job));
+    return renderJob(job, this.filterConfig, this.selectJob(job));
   }
 
   selectJob(job) {

@@ -7,6 +7,10 @@
     {
       "key": "type",
       "title": "Typ"
+    },
+    {
+      "key": "degree",
+      "title": "Akademischer Grad"
     }
   ],
   "jobs": [
@@ -18,7 +22,8 @@
       "description": "Sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.",
 
       "type": "Vollzeit",
-      "department": "Fertigung"
+      "department": "Fertigung",
+      "degree": "Master of Science"
     },
     {
       "id": 2,

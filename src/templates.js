@@ -26,12 +26,22 @@ export function renderDetailedJob(job, onGoBack) {
   return node;
 }
 
-export function renderJob(job, onSelect) {
+export function renderJob(job, filterConfig, onSelect) {
   const node = document.createElement("div");
   node.classList +=
     "jb-shadow-sm jb-shadow-hover jb-transition-base jb-rounded jb-mb-4";
   node.style.cursor = "pointer";
   node.onclick = onSelect;
+
+  const badges = filterConfig
+    .map(filterItem => {
+      if (job[filterItem.key]) {
+        return `<span class="jb-badge jb-badge-secondary">${
+          job[filterItem.key]
+        }</span>\n`;
+      } else return "";
+    })
+    .join("");
 
   node.innerHTML = `
     <div class="jb-p-3">
@@ -41,8 +51,7 @@ export function renderJob(job, onSelect) {
         <span class="jb-font-weight-light">${job.location}</span>
       </h5>
       <div class="jb-mt-2">
-        <span class="jb-badge jb-badge-secondary">${job.type}</span>
-        <span class="jb-badge jb-badge-secondary">${job.department}</span>
+        ${badges}
       </div>
       <hr class=""></hr>
       <p class="jb-text-dark jb-font-weight-light">${job.description}</p>
