@@ -28,6 +28,16 @@
     @include font-size($h6-font-size);
   }
 
+  a {
+    text-decoration: none;
+    color: $primary;
+    transition: $transition-base;
+
+    &:hover {
+      color: darken($primary, 10%);
+    }
+  }
+
   hr {
     margin-top: $spacer;
     margin-bottom: $spacer;

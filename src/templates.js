@@ -18,7 +18,7 @@ export function renderDetailedJob(job, filterConfig, onGoBack) {
   node.innerHTML = `
       <div>
         <nav class="jb-mb-4">
-          <a class="jb-text-primary" href="#">Zurück</a>
+          <a href="#"><h5 class="jb-font-weight-normal">Zurück</h5></a>
         </nav>
         <div class="jb-bg-light jb-rounded jb-shadow-sm jb-p-3 jb-p-sm-4 jb-p-lg-5">
           <h2 class="jb-text-secondary jb-font-weight-light jb-mb-2">${
