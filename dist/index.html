@@ -10,11 +10,30 @@
       crossorigin="anonymous"
     />-->
     <link rel="stylesheet" href="./jb-default-theme.css" />
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 0;
+      }
+      .navbar {
+        padding: 1rem 3rem;
+        background-color: dimgray;
+      }
+      .brand {
+        margin: 0;
+        color: white;
+        margin-top: 0.2em;
+      }
+      .brand span {
+        font-weight: 300;
+        color: lightblue;
+      }
+    </style>
   </head>
   <body>
-    <nav class="navbar sticky-top navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Job Viewer</a>
-    </nav>
+    <div class="navbar">
+      <h2 class="brand">job<span>board.</span></h2>
+    </div>
     <div id="jobs-root" class="jb-mt-5 jb-container"></div>
 
     <script src="./job-board.js"></script>

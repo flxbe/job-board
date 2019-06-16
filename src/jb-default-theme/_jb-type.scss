@@ -2,34 +2,36 @@
   font-size: $size;
 }
 
-h1,
-.h1 {
-  @include font-size($h1-font-size);
-}
-h2,
-.h2 {
-  @include font-size($h2-font-size);
-}
-h3,
-.h3 {
-  @include font-size($h3-font-size);
-}
-h4,
-.h4 {
-  @include font-size($h4-font-size);
-}
-h5,
-.h5 {
-  @include font-size($h5-font-size);
-}
-h6,
-.h6 {
-  @include font-size($h6-font-size);
-}
+.job-board {
+  h1,
+  .h1 {
+    @include font-size($h1-font-size);
+  }
+  h2,
+  .h2 {
+    @include font-size($h2-font-size);
+  }
+  h3,
+  .h3 {
+    @include font-size($h3-font-size);
+  }
+  h4,
+  .h4 {
+    @include font-size($h4-font-size);
+  }
+  h5,
+  .h5 {
+    @include font-size($h5-font-size);
+  }
+  h6,
+  .h6 {
+    @include font-size($h6-font-size);
+  }
 
-hr {
-  margin-top: $spacer;
-  margin-bottom: $spacer;
-  border: 0;
-  border-top: 1px solid rgba($secondary, 0.35);
+  hr {
+    margin-top: $spacer;
+    margin-bottom: $spacer;
+    border: 0;
+    border-top: 1px solid rgba($secondary, 0.35);
+  }
 }
