@@ -48,6 +48,7 @@ export async function mount(node, options = {}) {
     const job = jobs.find(job => job.id == id);
     const view = new JobView({
       job,
+      filterConfig,
       onGoBack: goToFilterView
     });
     mountView(view);

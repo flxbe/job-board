@@ -20,3 +20,9 @@
 .jb-font-weight-bold {
   font-weight: 700 !important;
 }
+
+@each $align in left, center, right {
+  .jb-text-#{$align} {
+    text-align: $align;
+  }
+}

@@ -1,19 +1,55 @@
-export function renderDetailedJob(job, onGoBack) {
+export function renderDetailedJob(job, filterConfig, onGoBack) {
   const node = document.createElement("div");
+
+  const filterAttributes = filterConfig
+    .map(filterItem => {
+      if (job[filterItem.key]) {
+        return `<h5 class="jb-text-secondary">${
+          filterItem.title
+        } <span class="jb-font-weight-light">${
+          job[filterItem.key]
+        }</span></h5>\n`;
+      } else return "";
+    })
+    .join("");
+
+  console.log(filterAttributes);
 
   node.innerHTML = `
       <div>
-        <nav class="nav">
-          <a class="nav-link" href="#">Zurück</a>
+        <nav class="jb-mb-4">
+          <a class="jb-text-primary" href="#">Zurück</a>
         </nav>
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">${job.title}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">
-              ${job.location}
-            </h6>
-            <p class="card-text">${job.description}</p>
+        <div class="jb-bg-light jb-rounded jb-shadow-sm jb-p-3 jb-p-sm-4 jb-p-lg-5">
+          <h2 class="jb-text-secondary jb-font-weight-light jb-mb-2">${
+            job.title
+          }</h5>
+          <div class="jb-mb-4">
+            <div class="jb-d-inline-block jb-bg-white jb-rounded jb-shadow-sm jb-py-2 jb-px-3 jb-mt-2">
+              <h5 class="jb-text-dark jb-mb-0">
+                Firma
+                </br>
+                <span class="jb-font-weight-light jb-text-primary">${
+                  job.company
+                }</span>
+              </h5>
+            </div>
+            <div class="jb-d-inline-block jb-bg-white jb-rounded jb-shadow-sm jb-py-2 jb-px-3 jb-mt-2">
+              <h5 class="jb-text-dark jb-mb-0">
+                Ort
+                </br>
+                <span class="jb-font-weight-light jb-text-primary">${
+                  job.location
+                }</span>
+              </h5>
+            </div>
           </div>
+          <div class="jb-mb-4">
+            ${filterAttributes}
+          </div>
+          <p class="jb-text-secondary jb-font-weight-light jb-mb-0">${
+            job.description
+          }</p>
         </div>
       <div>
     `;
@@ -44,7 +80,7 @@ export function renderJob(job, filterConfig, onSelect) {
     .join("");
 
   node.innerHTML = `
-    <div class="jb-p-3">
+    <div class="jb-p-4">
       <h4 class="jb-text-primary jb-font-weight-light">${job.title}</h4>
       <h5 class="jb-text-dark jb-font-weight-normal jb-mb-2">
         ${job.company},
@@ -53,7 +89,7 @@ export function renderJob(job, filterConfig, onSelect) {
       <div class="jb-mt-2">
         ${badges}
       </div>
-      <p class="jb-text-secondary jb-font-weight-light jb-mt-3 jb-mb-0">${
+      <p class="jb-text-secondary jb-font-weight-light jb-mt-4 jb-mb-0">${
         job.description
       }</p>
     </div>
