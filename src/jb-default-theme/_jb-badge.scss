@@ -1,0 +1,26 @@
+.jb-badge {
+  display: inline-block;
+  line-height: 1;
+  vertical-align: baseline;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  border-radius: $border-radius;
+  white-space: nowrap;
+  color: $dark;
+}
+
+@each $color, $value in $colors {
+  .jb-badge-#{$color} {
+    @if ($color == secondary) {
+      color: $white;
+    }
+    @if ($color == black) {
+      color: $white;
+    }
+    @if ($color == dark) {
+      color: $white;
+    }
+    background-color: $value;
+  }
+}

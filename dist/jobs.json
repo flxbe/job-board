@@ -16,6 +16,7 @@
       "company": "Kunststoff GmBH",
       "location": "Magdeburg",
       "description": "Sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren.",
+
       "type": "Vollzeit",
       "department": "Fertigung"
     },
@@ -25,6 +26,7 @@
       "location": "Magdeburg",
       "company": "Kunststoff GmBH",
       "description": "Sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo.",
+
       "type": "Ausbildung",
       "department": "Fertigung"
     },

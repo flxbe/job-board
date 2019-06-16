@@ -38,8 +38,12 @@ export function renderJob(job, onSelect) {
       <h4 class="jb-text-primary jb-font-weight-light">${job.title}</h4>
       <h5 class="jb-text-dark jb-font-weight-normal jb-mb-2">
         ${job.company},
-        <span class="jb-ml-1 jb-font-weight-light">${job.location}</span>
+        <span class="jb-font-weight-light">${job.location}</span>
       </h5>
+      <div class="jb-mt-2">
+        <span class="jb-badge jb-badge-secondary">${job.type}</span>
+        <span class="jb-badge jb-badge-secondary">${job.department}</span>
+      </div>
       <hr class=""></hr>
       <p class="jb-text-dark jb-font-weight-light">${job.description}</p>
     </div>
