@@ -55,6 +55,7 @@ export async function mount(node, options = {}) {
 
   function mountView(view) {
     node.innerHTML = "";
+    node.classList.add("job-board");
     node.appendChild(view.node);
   }
 
