@@ -35,11 +35,12 @@ export function renderJob(job, onSelect) {
 
   node.innerHTML = `
     <div class="jb-p-3">
-      <h4 class="jb-text-primary font-weight-normal">${job.title}</h4>
-      <h5 class="jb-text-dark jb-mb-2">
+      <h4 class="jb-text-secondary jb-font-weight-light">${job.title}</h4>
+      <h5 class="jb-text-dark jb-font-weight-normal jb-mb-2">
         ${job.company},
         <span class="jb-ml-1 jb-font-weight-light">${job.location}</span>
       </h5>
+      <hr class=""></hr>
       <p class="jb-text-dark jb-font-weight-light">${job.description}</p>
     </div>
   `;
