@@ -1,6 +1,11 @@
 export function renderDetailedJob(job, filterConfig, onGoBack) {
   const node = document.createElement("div");
 
+  const coreAttributes =
+    createCoreAttribute("Firma", job.company) +
+    "\n" +
+    createCoreAttribute("Ort", job.location);
+
   const filterAttributes = filterConfig
     .map(filterItem => {
       if (job[filterItem.key]) {
@@ -13,8 +18,6 @@ export function renderDetailedJob(job, filterConfig, onGoBack) {
     })
     .join("");
 
-  console.log(filterAttributes);
-
   node.innerHTML = `
       <div>
         <nav class="jb-mb-4">
@@ -25,24 +28,7 @@ export function renderDetailedJob(job, filterConfig, onGoBack) {
             job.title
           }</h5>
           <div class="jb-mb-4">
-            <div class="jb-d-inline-block jb-bg-white jb-rounded jb-shadow-sm jb-py-2 jb-px-3 jb-mt-2">
-              <h5 class="jb-text-dark jb-mb-0">
-                Firma
-                </br>
-                <span class="jb-font-weight-light jb-text-primary">${
-                  job.company
-                }</span>
-              </h5>
-            </div>
-            <div class="jb-d-inline-block jb-bg-white jb-rounded jb-shadow-sm jb-py-2 jb-px-3 jb-mt-2">
-              <h5 class="jb-text-dark jb-mb-0">
-                Ort
-                </br>
-                <span class="jb-font-weight-light jb-text-primary">${
-                  job.location
-                }</span>
-              </h5>
-            </div>
+            ${coreAttributes}
           </div>
           <div class="jb-mb-4">
             ${filterAttributes}
@@ -60,6 +46,17 @@ export function renderDetailedJob(job, filterConfig, onGoBack) {
   };
 
   return node;
+}
+
+function createCoreAttribute(name, value) {
+  return `
+    <div class="jb-d-inline-block jb-bg-white jb-rounded jb-shadow-sm jb-py-2 jb-px-3 jb-mt-2">
+      <h5 class="jb-text-dark jb-mb-0">
+        ${name}
+        </br>
+        <span class="jb-font-weight-light jb-text-primary">${value}</span>
+      </h5>
+    </div>`;
 }
 
 export function renderJob(job, filterConfig, onSelect) {
