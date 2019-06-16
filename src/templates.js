@@ -53,8 +53,9 @@ export function renderJob(job, filterConfig, onSelect) {
       <div class="jb-mt-2">
         ${badges}
       </div>
-      <hr class=""></hr>
-      <p class="jb-text-dark jb-font-weight-light">${job.description}</p>
+      <p class="jb-text-secondary jb-font-weight-light jb-mt-3 jb-mb-0">${
+        job.description
+      }</p>
     </div>
   `;
 
@@ -67,7 +68,7 @@ export function renderCategoryFilter(title, options, onChange) {
 
   let innerHTML = `
       <div class="jb-p-3 jb-bg-light jb-rounded-top">
-        <h5 class="jb-text-dark jb-font-weight-light jb-mb-0">${title}</h5>
+        <h5 class="jb-text-secondary jb-font-weight-light jb-mb-0">${title}</h5>
       </div> 
       <div class="jb-p-3">
     `;
