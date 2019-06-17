@@ -9,11 +9,11 @@ export function renderDetailedJob(job, filterConfig, onGoBack) {
   const filterAttributes = filterConfig
     .map(filterItem => {
       if (job[filterItem.key]) {
-        return `<h5 class="jb-text-dark">${
+        return `<h6 class="jb-text-secondary">${
           filterItem.title
-        } <span class="jb-font-weight-light jb-text-secondary">${
+        } <span class="jb-font-weight-light">${
           job[filterItem.key]
-        }</span></h5>\n`;
+        }</span></h6>\n`;
       } else return "";
     })
     .join("");
@@ -51,11 +51,11 @@ export function renderDetailedJob(job, filterConfig, onGoBack) {
 function createCoreAttribute(name, value) {
   return `
     <div class="jb-d-inline-block jb-bg-white jb-rounded jb-shadow-sm jb-py-2 jb-px-3 jb-mt-2">
-      <h5 class="jb-text-dark jb-mb-0">
+      <h6 class="jb-text-dark jb-mb-0">
         ${name}
         </br>
         <span class="jb-font-weight-light jb-text-primary">${value}</span>
-      </h5>
+      </h6>
     </div>`;
 }
 
@@ -114,7 +114,7 @@ export function renderCategoryFilter(title, options, onChange) {
           class="jb-custom-checkbox-input"
           id="${option}"
         />
-        <label class="jb-custom-checkbox-label jb-text-dark jb-font-weight-light" for="${option}"
+        <label class="jb-custom-checkbox-label jb-text-secondary jb-font-weight-light" for="${option}"
           >${option}</label
         >
       </div>
