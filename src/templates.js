@@ -108,13 +108,13 @@ export function renderCategoryFilter(title, options, onChange) {
 
   for (let option of options) {
     innerHTML += `
-      <div class="custom-control custom-checkbox">
+      <div class="jb-custom-checkbox jb-mb-1">
         <input
           type="checkbox"
-          class="custom-control-input"
+          class="jb-custom-checkbox-input"
           id="${option}"
         />
-        <label class="custom-control-label jb-text-dark jb-font-weight-light" for="${option}"
+        <label class="jb-custom-checkbox-label jb-text-dark jb-font-weight-light" for="${option}"
           >${option}</label
         >
       </div>
