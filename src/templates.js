@@ -9,9 +9,9 @@ export function renderDetailedJob(job, filterConfig, onGoBack) {
   const filterAttributes = filterConfig
     .map(filterItem => {
       if (job[filterItem.key]) {
-        return `<h5 class="jb-text-secondary">${
+        return `<h5 class="jb-text-dark">${
           filterItem.title
-        } <span class="jb-font-weight-light">${
+        } <span class="jb-font-weight-light jb-text-secondary">${
           job[filterItem.key]
         }</span></h5>\n`;
       } else return "";
@@ -21,17 +21,17 @@ export function renderDetailedJob(job, filterConfig, onGoBack) {
   node.innerHTML = `
       <div>
         <nav class="jb-mb-4">
-          <a href="#"><h5 class="jb-font-weight-normal">Zurück</h5></a>
+          <a href="#"><h5 class="jb-font-weight-light">Zurück</h5></a>
         </nav>
         <div class="jb-bg-light jb-rounded jb-shadow-sm jb-p-3 jb-p-sm-4 jb-p-lg-5">
-          <h2 class="jb-text-secondary jb-font-weight-light jb-mb-2">${
+          <h2 class="jb-text-primary jb-font-weight-light jb-mb-4">${
             job.title
           }</h5>
-          <div class="jb-mb-4">
-            ${coreAttributes}
+          <div class="jb-mb-3">
+            ${filterAttributes}
           </div>
           <div class="jb-mb-4">
-            ${filterAttributes}
+            ${coreAttributes}
           </div>
           <p class="jb-text-secondary jb-font-weight-light jb-mb-0">${
             job.description
