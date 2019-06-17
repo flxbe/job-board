@@ -77,13 +77,13 @@ export function renderJob(job, filterConfig, onSelect) {
     .join("");
 
   node.innerHTML = `
-    <div class="jb-p-4">
-      <h4 class="jb-text-primary jb-font-weight-light">${job.title}</h4>
+    <div class="jb-p-3 jb-p-sm-4 jb-p-lg-5">
+      <h4 class="jb-text-primary jb-font-weight-light jb-mb-3">${job.title}</h4>
       <h5 class="jb-text-dark jb-font-weight-normal jb-mb-2">
-        ${job.company},
+        ${job.company} 
         <span class="jb-font-weight-light">${job.location}</span>
       </h5>
-      <div class="jb-mt-2">
+      <div class="jb-mb-2">
         ${badges}
       </div>
       <p class="jb-text-secondary jb-font-weight-light jb-mt-4 jb-mb-0">${
