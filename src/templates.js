@@ -62,14 +62,14 @@ function createCoreAttribute(name, value) {
 export function renderJob(job, filterConfig, onSelect) {
   const node = document.createElement("div");
   node.classList +=
-    "jb-shadow-sm jb-shadow-hover jb-transition-base jb-rounded jb-mb-4";
+    "jb-shadow-sm jb-shadow-hover jb-transition-base jb-rounded jb-mb-4 job-board-job";
   node.style.cursor = "pointer";
   node.onclick = onSelect;
 
   const badges = filterConfig
     .map(filterItem => {
       if (job[filterItem.key]) {
-        return `<span class="jb-badge jb-badge-secondary">${
+        return `<span class="jb-badge jb-badge-secondary job-board-job-filter-attribute">${
           job[filterItem.key]
         }</span>\n`;
       } else return "";
@@ -101,7 +101,7 @@ export function renderCategoryFilter(title, options, onChange) {
 
   let innerHTML = `
       <div class="jb-p-3 jb-bg-light jb-rounded-top">
-        <h5 class="jb-text-secondary jb-font-weight-light jb-mb-0 filter-title">${title}</h5>
+        <h5 class="jb-text-secondary jb-font-weight-light jb-mb-0 job-board-filter-title">${title}</h5>
       </div> 
       <div class="jb-p-3">
     `;
