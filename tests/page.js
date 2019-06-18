@@ -20,9 +20,17 @@ export function getFilterNodes(board) {
 }
 
 export function getFilterTitle(filter) {
-  return filter.querySelector(".filter-title").textContent;
+  return filter.querySelector(".job-board-filter-title").textContent;
 }
 
 export function getJobList(node) {
   return node.querySelector("#job-board-job-list");
+}
+
+export function getFirstJob(node) {
+  return node.querySelector(".job-board-job");
+}
+
+export function getJobFilterAttributes(jobNode) {
+  return jobNode.querySelectorAll(".job-board-job-filter-attribute");
 }
