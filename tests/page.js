@@ -1,4 +1,3 @@
-import assert from "assert";
 import { mount } from "../src/index.js";
 
 export async function mountJobBoard({ filters, jobs } = {}) {

@@ -6,8 +6,6 @@ export default class JobView {
     this.filterConfig = filterConfig;
     this.onGoBack = onGoBack;
 
-    console.log(filterConfig);
-
     this.render();
   }
 

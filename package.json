@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "build": "npm run sass:prod && npm run js",
+    "lint": "eslint .",
     "js": "webpack",
     "js:watch": "webpack --watch",
     "sass": "node-sass --source-map true src/jb-default-theme.scss dist/jb-default-theme.css",
@@ -19,6 +20,8 @@
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "babel-jest": "^24.8.0",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^5.0.0",
     "jest": "^24.8.0",
     "node-sass": "^4.12.0",
     "webpack": "^4.33.0",
