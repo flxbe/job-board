@@ -14,7 +14,6 @@ function isTrue(value) {
   return value === true;
 }
 
-
 export function getFilterConfig(jobs, filters) {
   return filters.map(extractFilterConfig(jobs));
 }
@@ -28,6 +27,9 @@ function extractFilterConfig(jobs) {
 }
 
 function getUniqueCategories(jobs, key) {
-  const categories = jobs.map(job => job[key]);
+  const categories = jobs
+    .map(job => job[key])
+    .filter(category => category !== undefined);
+
   return [...new Set(categories)];
 }
