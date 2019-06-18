@@ -1,19 +1,41 @@
-export function renderDetailedJob(job, onGoBack) {
+export function renderDetailedJob(job, filterConfig, onGoBack) {
   const node = document.createElement("div");
+
+  const coreAttributes =
+    createCoreAttribute("Firma", job.company) +
+    "\n" +
+    createCoreAttribute("Ort", job.location);
+
+  const filterAttributes = filterConfig
+    .map(filterItem => {
+      if (job[filterItem.key]) {
+        return `<h6 class="jb-text-secondary">${
+          filterItem.title
+        } <span class="jb-font-weight-light">${
+          job[filterItem.key]
+        }</span></h6>\n`;
+      } else return "";
+    })
+    .join("");
 
   node.innerHTML = `
       <div>
-        <nav class="nav">
-          <a class="nav-link" href="#">Zurück</a>
+        <nav class="jb-mb-4">
+          <a href="#"><h5 class="jb-font-weight-light">Zurück</h5></a>
         </nav>
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">${job.title}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">
-              ${job.location}
-            </h6>
-            <p class="card-text">${job.description}</p>
+        <div class="jb-bg-light jb-rounded jb-shadow-sm jb-p-3 jb-p-sm-4 jb-p-lg-5">
+          <h2 class="jb-text-primary jb-font-weight-light jb-mb-4">${
+            job.title
+          }</h5>
+          <div class="jb-mb-3">
+            ${filterAttributes}
           </div>
+          <div class="jb-mb-4">
+            ${coreAttributes}
+          </div>
+          <p class="jb-text-secondary jb-font-weight-light jb-mb-0">${
+            job.description
+          }</p>
         </div>
       <div>
     `;
@@ -26,19 +48,47 @@ export function renderDetailedJob(job, onGoBack) {
   return node;
 }
 
-export function renderJob(job, onSelect) {
+function createCoreAttribute(name, value) {
+  return `
+    <div class="jb-d-inline-block jb-bg-white jb-rounded jb-shadow-sm jb-py-2 jb-px-3 jb-mt-2">
+      <h6 class="jb-text-dark jb-mb-0">
+        ${name}
+        </br>
+        <span class="jb-font-weight-light jb-text-primary">${value}</span>
+      </h6>
+    </div>`;
+}
+
+export function renderJob(job, filterConfig, onSelect) {
   const node = document.createElement("div");
-  node.classList += "shadow-sm card mb-4";
+  node.classList +=
+    "jb-shadow-sm jb-shadow-hover jb-transition-base jb-rounded jb-mb-4";
   node.style.cursor = "pointer";
   node.onclick = onSelect;
 
+  const badges = filterConfig
+    .map(filterItem => {
+      if (job[filterItem.key]) {
+        return `<span class="jb-badge jb-badge-secondary">${
+          job[filterItem.key]
+        }</span>\n`;
+      } else return "";
+    })
+    .join("");
+
   node.innerHTML = `
-    <div class="card-body">
-      <h5 class="card-title">${job.title}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">
-        ${job.location}
-      </h6>
-      <p class="card-text">${job.description}</p>
+    <div class="jb-p-3 jb-p-sm-4 jb-p-lg-5">
+      <h4 class="jb-text-primary jb-font-weight-light jb-mb-3">${job.title}</h4>
+      <h5 class="jb-text-dark jb-font-weight-normal jb-mb-2">
+        ${job.company} 
+        <span class="jb-font-weight-light">${job.location}</span>
+      </h5>
+      <div class="jb-mb-2">
+        ${badges}
+      </div>
+      <p class="jb-text-secondary jb-font-weight-light jb-mt-4 jb-mb-0">${
+        job.description
+      }</p>
     </div>
   `;
 
@@ -47,22 +97,24 @@ export function renderJob(job, onSelect) {
 
 export function renderCategoryFilter(title, options, onChange) {
   const node = document.createElement("div");
-  node.classList += "card mb-4";
+  node.classList += "jb-shadow-sm jb-rounded jb-mb-4";
 
   let innerHTML = `
-      <div class="card-header">${title}</div> 
-      <div class="card-body">
+      <div class="jb-p-3 jb-bg-light jb-rounded-top">
+        <h5 class="jb-text-secondary jb-font-weight-light jb-mb-0 filter-title">${title}</h5>
+      </div> 
+      <div class="jb-p-3">
     `;
 
   for (let option of options) {
     innerHTML += `
-      <div class="custom-control custom-checkbox">
+      <div class="jb-custom-checkbox jb-mb-1">
         <input
           type="checkbox"
-          class="custom-control-input"
+          class="jb-custom-checkbox-input"
           id="${option}"
         />
-        <label class="custom-control-label" for="${option}"
+        <label class="jb-custom-checkbox-label jb-text-secondary jb-font-weight-light" for="${option}"
           >${option}</label
         >
       </div>

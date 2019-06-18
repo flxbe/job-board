@@ -1,0 +1,27 @@
+@each $pos in top, bottom, left, right {
+  .jb-border-#{$pos},
+  .jb-border {
+    border-#{$pos}: $border-width solid $border-color !important;
+  }
+}
+
+@each $color-name, $color-value in $colors {
+  .jb-border-#{$color-name} {
+    border-color: $color-value !important;
+  }
+}
+
+@each $pos in top, bottom {
+  .jb-rounded-#{$pos},
+  .jb-rounded {
+    border-#{$pos}-left-radius: $border-radius !important;
+    border-#{$pos}-right-radius: $border-radius !important;
+  }
+}
+@each $pos in right, left {
+  .jb-rounded-#{$pos},
+  .jb-rounded {
+    border-top-#{$pos}-radius: $border-radius !important;
+    border-bottom-#{$pos}-radius: $border-radius !important;
+  }
+}

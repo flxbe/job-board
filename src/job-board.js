@@ -60,16 +60,28 @@ export default class JobBoard {
     const job = this.jobs.find(job => job.id == jobId);
     return new JobView({
       job,
+      filterConfig: this.filterConfigs,
       onGoBack: this._goToFilterView
     });
   }
 
   mountView(view) {
+    this.node.innerHTML = "";
+    this.node.classList.add("job-board");
+
+    const container = document.createElement("div");
+    container.classList.add("jb-container");
+    container.appendChild(view.node);
+
+    this.node.appendChild(container);
+
+    /*
     if (this.view) {
       this.view.node.replaceWith(view.node);
     } else {
       this.node.appendChild(view.node);
     }
+    */
 
     this.view = view;
   }
