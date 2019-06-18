@@ -2,21 +2,43 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Jobs</title>
-    <link
+    <title>jobboard.</title>
+    <!--<link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
-    />
+    />-->
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 0;
+      }
+      .navbar {
+        padding: 15px;
+        background-color: dimgray;
+      }
+      .brand {
+        margin: 0;
+        color: white;
+        margin-top: 0.2em;
+        cursor: pointer;
+      }
+      .brand span {
+        font-weight: 300;
+        color: lightblue;
+      }
+      #jobs-root {
+        margin-top: 3rem;
+      }
+    </style>
+    <link rel="stylesheet" href="./jb-default-theme.css" />
   </head>
   <body>
-    <nav class="navbar sticky-top navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Job Viewer</a>
-    </nav>
-    <div class="container">
-      <div id="jobs-root" class="mt-5"></div>
+    <div class="navbar">
+      <h2 class="brand">job<span>board.</span></h2>
     </div>
+    <div id="jobs-root"></div>
 
     <script src="./job-board.js"></script>
     <script type="module" src="./index.js"></script>

@@ -11,7 +11,7 @@ export default class FilterView {
 
     this._handleFilterUpdate = () => this.updateResults();
 
-    this.jobList = new JobList(onSelectJob);
+    this.jobList = new JobList(filterConfigs, onSelectJob);
 
     this.filterContainer = new FilterContainer(
       filterConfigs,
@@ -32,7 +32,7 @@ export default class FilterView {
   render() {
     this.node = document.createElement("div");
     this.node.id = "job-board-filter-view";
-    this.node.classList += "row";
+    this.node.classList += "jb-row";
 
     this.node.appendChild(this.filterContainer.node);
     this.node.appendChild(this.jobList.node);

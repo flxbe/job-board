@@ -20,7 +20,7 @@ export function getFilterNodes(board) {
 }
 
 export function getFilterTitle(filter) {
-  return filter.querySelector(".card-header").textContent;
+  return filter.querySelector(".filter-title").textContent;
 }
 
 export function getJobList(node) {

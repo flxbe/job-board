@@ -1,0 +1,8 @@
+@each $box-shadow, $value in $box-shadows {
+  .jb-#{$box-shadow} {
+    box-shadow: $value !important;
+  }
+  .jb-#{$box-shadow}-hover:hover {
+    box-shadow: $value !important;
+  }
+}

@@ -5,18 +5,23 @@
   "main": "dist/job-board.js",
   "scripts": {
     "test": "jest",
-    "build": "webpack",
-    "watch": "webpack --watch"
+    "build": "npm run sass:prod && npm run js",
+    "js": "webpack",
+    "js:watch": "webpack --watch",
+    "sass": "node-sass --source-map true src/jb-default-theme.scss dist/jb-default-theme.css",
+    "sass:prod": "node-sass --source-map true --output-style compressed src/jb-default-theme.scss dist/jb-default-theme.css",
+    "sass:watch": "npm run sass -- --watch"
   },
   "author": "Felix Bernhardt",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "webpack": "^4.33.0",
-    "webpack-cli": "^3.3.2",
     "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.4.5",
     "babel-jest": "^24.8.0",
-    "jest": "^24.8.0"
+    "jest": "^24.8.0",
+    "node-sass": "^4.12.0",
+    "webpack": "^4.33.0",
+    "webpack-cli": "^3.3.2"
   }
 }
