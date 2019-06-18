@@ -1,15 +1,17 @@
+import * as Job from "./job-builder";
+
 import { mountJobBoard, getFirstJob, getJobFilterAttributes } from "./page";
 
-const filterCategory1 = {
+const jobTypeFilter = {
   key: "type",
   title: "Jobtyp"
 };
-const filterCategory2 = {
+const departmentFilter = {
   key: "department",
   title: "Abteilung"
 };
-const job1 = {
-  id: 1,
+
+const job1 = Job.create({
   title: "Job 1",
   company: "Company 1",
   location: "Magdeburg",
@@ -17,23 +19,23 @@ const job1 = {
 
   type: "Vollzeit",
   department: "Fertigung"
-};
-const job2 = {
-  id: 2,
+});
+
+const job2 = Job.create({
   title: "Job 2",
   company: "Company 1",
   location: "Magdeburg",
   description: "Lorem ipsum",
 
   type: "Teilzeit"
-};
+});
 
 describe("Rendering a job", () => {
   test("should render all filter attributes of the job", async () => {
-    const board = await mountJobBoard({
-      filters: [filterCategory1, filterCategory2],
-      jobs: [job1]
-    });
+    const filters = [jobTypeFilter, departmentFilter];
+    const jobs = [job1];
+    const board = await mountJobBoard({ filters, jobs });
+
     const jobRendered = getFirstJob(board);
     const filteredAttributes = getJobFilterAttributes(jobRendered);
 
@@ -43,11 +45,11 @@ describe("Rendering a job", () => {
   });
 
   describe("when job has not all filter attributes", () => {
-    test("should only render filter attribute the job has", async () => {
-      const board = await mountJobBoard({
-        filters: [filterCategory1, filterCategory2],
-        jobs: [job2]
-      });
+    test("should only render existing filter attributes", async () => {
+      const filters = [jobTypeFilter, departmentFilter];
+      const jobs = [job2];
+      const board = await mountJobBoard({ filters, jobs });
+
       const jobRendered = getFirstJob(board);
       const filteredAttributes = getJobFilterAttributes(jobRendered);
 
