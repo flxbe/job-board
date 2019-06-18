@@ -101,7 +101,7 @@ export function renderCategoryFilter(title, options, onChange) {
 
   let innerHTML = `
       <div class="jb-p-3 jb-bg-light jb-rounded-top">
-        <h5 class="jb-text-secondary jb-font-weight-light jb-mb-0">${title}</h5>
+        <h5 class="jb-text-secondary jb-font-weight-light jb-mb-0 filter-title">${title}</h5>
       </div> 
       <div class="jb-p-3">
     `;
