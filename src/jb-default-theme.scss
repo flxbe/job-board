@@ -1,14 +1,16 @@
-@import "./jb-default-theme/jb-variables";
-@import "./jb-default-theme/jb-reboot";
-@import "./jb-default-theme/jb-type";
-@import "./jb-default-theme/jb-breakpoints";
-@import "./jb-default-theme/jb-grid";
-@import "./jb-default-theme/jb-spacing";
-@import "./jb-default-theme/jb-text";
-@import "./jb-default-theme/jb-border";
-@import "./jb-default-theme/jb-shadows";
-@import "./jb-default-theme/jb-transitions";
-@import "./jb-default-theme/jb-backgrounds";
-@import "./jb-default-theme/jb-badge";
-@import "./jb-default-theme/jb-display";
-@import "./jb-default-theme/jb-forms";
+.job-board {
+  @import "./jb-default-theme/jb-variables";
+  @import "./jb-default-theme/jb-reboot";
+  @import "./jb-default-theme/jb-type";
+  @import "./jb-default-theme/jb-breakpoints";
+  @import "./jb-default-theme/jb-grid";
+  @import "./jb-default-theme/jb-spacing";
+  @import "./jb-default-theme/jb-text";
+  @import "./jb-default-theme/jb-border";
+  @import "./jb-default-theme/jb-shadows";
+  @import "./jb-default-theme/jb-transitions";
+  @import "./jb-default-theme/jb-backgrounds";
+  @import "./jb-default-theme/jb-badge";
+  @import "./jb-default-theme/jb-display";
+  @import "./jb-default-theme/jb-forms";
+}
