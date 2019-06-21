@@ -27,7 +27,9 @@ export function renderDetailedJob(job, filterConfig, onGoBack) {
       href = job.callToAction.link;
     }
 
-    ctaButton = `<a href="${href}">${job.callToAction.name}</a>`;
+    ctaButton = `<a class="jb-btn jb-btn-secondary" href="${href}" target="blank_">${
+      job.callToAction.name
+    }</a>`;
   }
 
   node.innerHTML = `
@@ -48,7 +50,7 @@ export function renderDetailedJob(job, filterConfig, onGoBack) {
           <p class="jb-text-secondary jb-font-weight-light jb-mb-0">${
             job.description
           }</p>
-          <div class="jb-mt-3">
+          <div class="jb-mt-4">
             ${ctaButton}
           </div>
         </div>

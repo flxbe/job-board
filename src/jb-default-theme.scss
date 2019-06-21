@@ -1,5 +1,6 @@
 .job-board {
   @import "./jb-default-theme/jb-variables";
+  @import "./jb-default-theme/jb-functions";
   @import "./jb-default-theme/jb-reboot";
   @import "./jb-default-theme/jb-type";
   @import "./jb-default-theme/jb-breakpoints";
@@ -13,4 +14,5 @@
   @import "./jb-default-theme/jb-badge";
   @import "./jb-default-theme/jb-display";
   @import "./jb-default-theme/jb-forms";
+  @import "./jb-default-theme/jb-buttons";
 }
