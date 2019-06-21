@@ -1,6 +1,6 @@
 import * as Job from "./job-builder";
 
-import { mountJobBoard, getFirstJob, getJobFilterAttributes } from "./page";
+import { createJobBoard, getFirstJob, getJobFilterAttributes } from "./page";
 
 const jobTypeFilter = {
   key: "type",
@@ -32,10 +32,10 @@ const job2 = Job.create({
 });
 
 describe("Rendering a job", () => {
-  test("should render all filter attributes of the job", async () => {
+  test("should render all filter attributes of the job", () => {
     const filters = [jobTypeFilter, departmentFilter];
     const jobs = [job1];
-    const board = await mountJobBoard({ filters, jobs });
+    const { board } = createJobBoard({ filters, jobs });
 
     const jobRendered = getFirstJob(board);
     const filteredAttributes = getJobFilterAttributes(jobRendered);
@@ -46,10 +46,10 @@ describe("Rendering a job", () => {
   });
 
   describe("when job has not all filter attributes", () => {
-    test("should only render existing filter attributes", async () => {
+    test("should only render existing filter attributes", () => {
       const filters = [jobTypeFilter, departmentFilter];
       const jobs = [job2];
-      const board = await mountJobBoard({ filters, jobs });
+      const { board } = createJobBoard({ filters, jobs });
 
       const jobRendered = getFirstJob(board);
       const filteredAttributes = getJobFilterAttributes(jobRendered);

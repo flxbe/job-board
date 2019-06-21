@@ -1,25 +1,16 @@
-import { mount } from "../src/index.js";
+import Location from "../src/location.js";
 import JobBoard from "../src/job-board.js";
 import { getFilterConfig } from "../src/filter.js";
 
-export async function mountJobBoard({ filters, jobs } = {}) {
-  filters = filters || [];
-  jobs = jobs || [];
-
-  const node = document.createElement("div");
-  await mount(node, { filters, jobs });
-  return node;
-}
-
-export function createJobBoard({ filters, jobs, onNavigate, rootUrl } = {}) {
+export function createJobBoard({ filters, jobs, onNavigate } = {}) {
   filters = filters || [];
   jobs = jobs || [];
   onNavigate = onNavigate || jest.fn();
-  rootUrl = rootUrl || "test.html";
+  const location = Location.toFilterView();
 
   const node = document.createElement("div");
   const filterConfigs = getFilterConfig(jobs, filters);
-  const board = new JobBoard(node, jobs, filterConfigs, onNavigate, rootUrl);
+  const board = new JobBoard(node, jobs, filterConfigs, onNavigate, location);
 
   return {
     filters,
@@ -31,13 +22,28 @@ export function createJobBoard({ filters, jobs, onNavigate, rootUrl } = {}) {
   };
 }
 
-export function getFilterContainer(node) {
-  return node.querySelector("#job-board-filter-container");
+export function selectJob(board, index) {
+  const jobNode = getFirstJob(board);
+  jobNode.click();
+}
+
+export function isOnFilterView(board) {
+  const node = board.node.querySelector("#job-board-filter-view");
+  return node !== null;
+}
+
+export function isOnJobView(board) {
+  const node = board.node.querySelector("#job-board-job-view");
+  return node !== null;
 }
 
 export function getFilterNodes(board) {
-  const filterContainer = getFilterContainer(board);
+  const filterContainer = getFilterContainer(board.node);
   return filterContainer.children;
+}
+
+export function getFilterContainer(node) {
+  return node.querySelector("#job-board-filter-container");
 }
 
 export function getFilterTitle(filter) {
@@ -48,8 +54,8 @@ export function getJobList(node) {
   return node.querySelector("#job-board-job-list");
 }
 
-export function getFirstJob(node) {
-  return node.querySelector(".job-board-job");
+export function getFirstJob(board) {
+  return board.node.querySelector(".job-board-job");
 }
 
 export function getJobFilterAttributes(jobNode) {

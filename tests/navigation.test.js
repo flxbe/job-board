@@ -1,21 +1,36 @@
 import * as Job from "./job-builder";
-import * as page from "./page";
 
-import { createJobBoard, getFirstJob, getJobFilterAttributes } from "./page";
+import { createJobBoard, selectJob, isOnFilterView, isOnJobView } from "./page";
 
-describe("Navigating to a detailed job", () => {
-  test("should update the url", () => {
-    const rootUrl = "/dir/test.html";
+describe("Navigating to a job", () => {
+  test("should call the onNavigate callback function", () => {
     const jobs = [Job.create()];
-    const { board, onNavigate } = createJobBoard({ jobs, rootUrl });
+    const { board, onNavigate } = createJobBoard({ jobs });
 
     selectJob(board, 0);
-    const expectedLocation = `/dir/test.html?job_id=${jobs[0].id}`;
-    expect(onNavigate).toHaveBeenCalledWith(expectedLocation);
+
+    expect(onNavigate).toHaveBeenCalled();
+  });
+
+  test("should return the correct location", () => {
+    const jobs = [Job.create()];
+    const { board, onNavigate } = createJobBoard({ jobs });
+
+    selectJob(board, 0);
+
+    const location = onNavigate.mock.calls[0][0];
+    expect(location.isJobLocation()).toBeTruthy();
+    expect(location.jobId).toEqual(jobs[0].id);
+  });
+
+  test("should render the detailed job view", () => {
+    const jobs = [Job.create()];
+    const { board } = createJobBoard({ jobs });
+
+    expect(isOnFilterView(board)).toBeTruthy();
+
+    selectJob(board, 0);
+
+    expect(isOnJobView(board)).toBeTruthy();
   });
 });
-
-function selectJob(board, index) {
-  const jobNode = page.getFirstJob(board.node);
-  jobNode.click();
-}
