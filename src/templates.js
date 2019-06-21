@@ -18,6 +18,18 @@ export function renderDetailedJob(job, filterConfig, onGoBack) {
     })
     .join("");
 
+  let ctaButton = "";
+  if (job.callToAction) {
+    let href = "";
+    if (job.callToAction.mail) {
+      href = "mailto:" + job.callToAction.mail;
+    } else if (job.callToAction.link) {
+      href = job.callToAction.link;
+    }
+
+    ctaButton = `<a href="${href}">${job.callToAction.name}</a>`;
+  }
+
   node.innerHTML = `
       <div>
         <nav class="jb-mb-4">
@@ -36,6 +48,9 @@ export function renderDetailedJob(job, filterConfig, onGoBack) {
           <p class="jb-text-secondary jb-font-weight-light jb-mb-0">${
             job.description
           }</p>
+          <div class="jb-mt-3">
+            ${ctaButton}
+          </div>
         </div>
       <div>
     `;
