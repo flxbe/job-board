@@ -1,49 +1,14 @@
----
-id: intro
-title: Getting Started
----
-
-JobBoard is a client side JavaScript library to generate a beautiful and feature-rich presentation of job offers with minimal manual effort.
-
-It includes a powerful filter view and can be easily configured.
-
-## Installation
-
-JobBoard is available as a pre-build JavaScript and CSS package from a CDN.
-
-### JS
-
-```html
-<script src="todo" integrity="todo" crossorigin="anonymous"></script>
-```
-
-### CSS
-
-```html
-<link rel="stylesheet" href="todo" integrity="todo" crossorigin="anonymous" />
-```
-
-## Starter Template
-
-Use this HTML template to easily get started with a minimal JobBoard setup:
-
-```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link
-      rel="stylesheet"
-      href="todo"
-      integrity="todo"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="./jb-default-theme.css" />
     <title>Job Board Example</title>
   </head>
   <body>
     <div id="jobs-root"></div>
 
-    <script src="todo" integrity="todo" crossorigin="anonymous"></script>
+    <script src="./job-board.js"></script>
     <script>
       const filters = [
         {
@@ -75,4 +40,3 @@ Use this HTML template to easily get started with a minimal JobBoard setup:
     </script>
   </body>
 </html>
-```
