@@ -1,7 +1,8 @@
 import { renderJob } from "./templates.js";
 
 export default class JobList {
-  constructor(onSelectJob) {
+  constructor(filterConfigs, onSelectJob) {
+    this.filterConfigs = filterConfigs;
     this.onSelectJob = onSelectJob;
     this.node = this.createNode();
   }
@@ -14,13 +15,13 @@ export default class JobList {
 
   createNode() {
     const node = document.createElement("div");
-    node.classList += "col-lg-9";
+    node.classList += "jb-col-lg-9";
     node.id = "job-board-job-list";
     return node;
   }
 
   renderJob(job) {
-    return renderJob(job, this.selectJob(job));
+    return renderJob(job, this.filterConfigs, this.selectJob(job));
   }
 
   selectJob(job) {

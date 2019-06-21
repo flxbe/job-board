@@ -1,0 +1,5 @@
+@each $prop in none, inline, inline-block, block, flex, table, initial {
+  .jb-d-#{$prop} {
+    display: $prop !important;
+  }
+}

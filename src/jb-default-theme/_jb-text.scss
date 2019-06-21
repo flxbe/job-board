@@ -1,0 +1,28 @@
+@each $color-name, $color-value in $colors {
+  @each $prop, $abbrev in (color: text, background-color: bg) {
+    .jb-#{$abbrev}-#{$color-name} {
+      #{$prop}: $color-value !important;
+    }
+  }
+}
+
+@for $i from 1 to 10 {
+  .jb-font-weight-#{$i}00 {
+    font-weight: $i * 100 !important;
+  }
+}
+.jb-font-weight-light {
+  font-weight: 300 !important;
+}
+.jb-font-weight-normal {
+  font-weight: 400 !important;
+}
+.jb-font-weight-bold {
+  font-weight: 700 !important;
+}
+
+@each $align in left, center, right {
+  .jb-text-#{$align} {
+    text-align: $align;
+  }
+}

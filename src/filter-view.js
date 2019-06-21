@@ -3,18 +3,18 @@ import JobList from "./job-list.js";
 import filterJobs from "./filter.js";
 
 export default class FilterView {
-  constructor({ filterConfig, jobs, onUpdateFilter, onSelectJob }) {
-    this.filterConfig = filterConfig;
+  constructor({ filterConfigs, jobs, onUpdateFilter, onSelectJob }) {
+    this.filterConfigs = filterConfigs;
     this.jobs = jobs;
     this.onUpdateFilter = onUpdateFilter;
     this.onSelectJob = onSelectJob;
 
     this._handleFilterUpdate = () => this.updateResults();
 
-    this.jobList = new JobList(onSelectJob);
+    this.jobList = new JobList(filterConfigs, onSelectJob);
 
     this.filterContainer = new FilterContainer(
-      filterConfig,
+      filterConfigs,
       this._handleFilterUpdate
     );
 
@@ -32,7 +32,7 @@ export default class FilterView {
   render() {
     this.node = document.createElement("div");
     this.node.id = "job-board-filter-view";
-    this.node.classList += "row";
+    this.node.classList += "jb-row";
 
     this.node.appendChild(this.filterContainer.node);
     this.node.appendChild(this.jobList.node);

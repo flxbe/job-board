@@ -1,0 +1,9 @@
+@each $color, $value in $colors {
+  .jb-bg-#{$color} {
+    background-color: $value;
+  }
+}
+
+.jb-bg-transparent {
+  background-color: transparent !important;
+}

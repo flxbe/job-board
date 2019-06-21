@@ -1,6 +1,6 @@
 import filterJobs from "../src/filter.js";
 
-describe("filtering jobs", () => {
+describe("Filtering jobs", () => {
   describe("when every filter is empty", () => {
     test("should return all jobs", () => {
       const jobs = [createJob(), createJob()];
