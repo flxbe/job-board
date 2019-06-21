@@ -1,21 +1,20 @@
 import Location from "../src/location.js";
 import JobBoard from "../src/job-board.js";
-import { getFilterConfig } from "../src/filter.js";
 
-export function createJobBoard({ filters, jobs, onNavigate } = {}) {
+export function createJobBoard({ filters, jobs, onNavigate, location } = {}) {
   filters = filters || [];
   jobs = jobs || [];
   onNavigate = onNavigate || jest.fn();
-  const location = Location.toFilterView();
+  location = location || Location.toFilterView();
 
   const node = document.createElement("div");
-  const filterConfigs = getFilterConfig(jobs, filters);
-  const board = new JobBoard(node, jobs, filterConfigs, onNavigate, location);
+  const board = new JobBoard(node, jobs, filters, onNavigate, location);
 
   return {
     filters,
     jobs,
     onNavigate,
+    location,
 
     node,
     board
@@ -23,7 +22,8 @@ export function createJobBoard({ filters, jobs, onNavigate } = {}) {
 }
 
 export function selectJob(board, index) {
-  const jobNode = getFirstJob(board);
+  const nodes = board.node.querySelectorAll(".job-board-job");
+  const jobNode = nodes[index];
   jobNode.click();
 }
 

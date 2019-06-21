@@ -1,12 +1,14 @@
+import { getFilterConfig } from "./filter.js";
 import Location from "./location.js";
 import FilterView from "./filter-view.js";
 import JobView from "./job-view.js";
 
 export default class JobBoard {
-  constructor(node, jobs, filterConfigs, onNavigate, location) {
+  constructor(node, jobs, filters, onNavigate, location) {
     this.node = node;
     this.jobs = jobs;
-    this.filterConfigs = filterConfigs;
+    this.filters = filters;
+    this.filterConfigs = getFilterConfig(jobs, filters);
     this.onNavigate = onNavigate;
     this.location = location;
 
@@ -46,7 +48,7 @@ export default class JobBoard {
     this.mountView(viewContainer);
   }
 
-  renderView(l) {
+  renderView() {
     if (this.location.isFilterLocation()) {
       return this.renderFilterView();
     } else {
