@@ -7,8 +7,7 @@ module.exports = {
     es6: true,
     browser: true
   },
-  extends: ["prettier"],
-  extends: "eslint:recommended",
+  extends: ["eslint:recommended", "prettier"],
   overrides: [
     {
       files: ["**/*.test.js", "**/*.spec.js", "**/*.test.template.js"],

@@ -6,6 +6,7 @@ const jobTypeFilter = {
   key: "type",
   title: "Jobtyp"
 };
+
 const departmentFilter = {
   key: "department",
   title: "Abteilung"
@@ -40,8 +41,8 @@ describe("Rendering a job", () => {
     const filteredAttributes = getJobFilterAttributes(jobRendered);
 
     expect(filteredAttributes.length).toBe(2);
-    expect(filteredAttributes[0].textContent).toBe(job1[filterCategory1.key]);
-    expect(filteredAttributes[1].textContent).toBe(job1[filterCategory2.key]);
+    expect(filteredAttributes[0].textContent).toBe(job1[jobTypeFilter.key]);
+    expect(filteredAttributes[1].textContent).toBe(job1[departmentFilter.key]);
   });
 
   describe("when job has not all filter attributes", () => {
@@ -54,7 +55,7 @@ describe("Rendering a job", () => {
       const filteredAttributes = getJobFilterAttributes(jobRendered);
 
       expect(filteredAttributes.length).toBe(1);
-      expect(filteredAttributes[0].textContent).toBe(job2[filterCategory1.key]);
+      expect(filteredAttributes[0].textContent).toBe(job2[jobTypeFilter.key]);
     });
   });
 });
