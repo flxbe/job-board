@@ -7,8 +7,8 @@ export function createJobBoard({ filters, jobs, onNavigate, location } = {}) {
   onNavigate = onNavigate || jest.fn();
   location = location || Location.toFilterView();
 
-  const node = document.createElement("div");
-  const board = new JobBoard(node, jobs, filters, onNavigate, location);
+  const rootNode = document.createElement("div");
+  const board = new JobBoard(rootNode, jobs, filters, onNavigate, location);
 
   return {
     filters,
@@ -16,7 +16,7 @@ export function createJobBoard({ filters, jobs, onNavigate, location } = {}) {
     onNavigate,
     location,
 
-    node,
+    rootNode,
     board
   };
 }
