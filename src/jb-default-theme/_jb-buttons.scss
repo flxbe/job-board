@@ -1,0 +1,26 @@
+.jb-btn {
+  display: inline-block;
+  text-align: center;
+  user-select: none;
+  color: $dark;
+  background-color: transparent;
+  font-size: $font-size-base;
+  border-radius: $border-radius;
+  padding: 0.75rem 1.75rem;
+  transition: $transition-base;
+  border: none;
+}
+
+@each $color, $value in $colors {
+  .jb-btn-#{$color} {
+    background-color: $value;
+    color: color-yiq($value);
+    box-shadow: 0 18px 40px -8px rgba($color: $dark, $alpha: 0.4);
+
+    &:hover {
+      transform: translateY(-1.5px);
+      color: color-yiq($value);
+      box-shadow: 0 18px 40px -4px rgba($color: $dark, $alpha: 0.45);
+    }
+  }
+}

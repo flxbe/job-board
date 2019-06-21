@@ -23,7 +23,12 @@
 
       "type": "Vollzeit",
       "department": "Fertigung",
-      "degree": "Master of Science"
+      "degree": "Master of Science",
+
+      "callToAction": {
+        "name": "Jetzt bewerben",
+        "mail": "career@kunststoff-gmbh.de"
+      }
     },
     {
       "id": 2,
@@ -33,7 +38,12 @@
       "description": "Sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo.",
 
       "type": "Ausbildung",
-      "department": "Fertigung"
+      "department": "Fertigung",
+
+      "callToAction": {
+        "name": "Jetzt bewerben",
+        "link": "http://www.example.org"
+      }
     },
     {
       "id": 3,
