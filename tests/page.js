@@ -1,4 +1,6 @@
 import { mount } from "../src/index.js";
+import JobBoard from "../src/job-board.js";
+import { getFilterConfig } from "../src/filter.js";
 
 export async function mountJobBoard({ filters, jobs } = {}) {
   filters = filters || [];
@@ -7,6 +9,26 @@ export async function mountJobBoard({ filters, jobs } = {}) {
   const node = document.createElement("div");
   await mount(node, { filters, jobs });
   return node;
+}
+
+export function createJobBoard({ filters, jobs, onNavigate, rootUrl } = {}) {
+  filters = filters || [];
+  jobs = jobs || [];
+  onNavigate = onNavigate || jest.fn();
+  rootUrl = rootUrl || "test.html";
+
+  const node = document.createElement("div");
+  const filterConfigs = getFilterConfig(jobs, filters);
+  const board = new JobBoard(node, jobs, filterConfigs, onNavigate, rootUrl);
+
+  return {
+    filters,
+    jobs,
+    onNavigate,
+
+    node,
+    board
+  };
 }
 
 export function getFilterContainer(node) {

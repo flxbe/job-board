@@ -5,7 +5,18 @@ export async function mount(node, options = {}) {
   const { jobs, filters } = await loadData(options);
   const filterConfigs = getFilterConfig(jobs, filters);
 
-  new JobBoard(node, jobs, filterConfigs);
+  function onNavigate(target) {
+    history.pushState({}, "", target);
+    jobBoard.updateLocation(window.location);
+  }
+
+  const jobBoard = new JobBoard(
+    node,
+    jobs,
+    filterConfigs,
+    onNavigate,
+    window.location.pathname
+  );
 }
 
 async function loadData({ source, jobs, filters }) {

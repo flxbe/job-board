@@ -4,10 +4,12 @@ import JobView from "./job-view.js";
 const QUERY_PARAMETR = "job_id";
 
 export default class JobBoard {
-  constructor(node, jobs, filterConfigs) {
+  constructor(node, jobs, filterConfigs, onNavigate, rootUrl) {
     this.node = node;
     this.jobs = jobs;
     this.filterConfigs = filterConfigs;
+    this.onNavigate = onNavigate;
+    this.rootUrl = rootUrl;
 
     this._goToJobView = id => this.goToJobView(id);
     this._goToFilterView = () => this.goToFilterView();
@@ -26,12 +28,12 @@ export default class JobBoard {
   }
 
   goToJobView(jobId) {
-    history.pushState({}, "Job", `index.html?${QUERY_PARAMETR}=${jobId}`);
+    this.onNavigate(`${this.rootUrl}?${QUERY_PARAMETR}=${jobId}`);
     this.updateLocation(window.location);
   }
 
   goToFilterView() {
-    history.pushState({}, "FilterView", "index.html");
+    this.onNavigate(this.rootUrl);
     this.updateLocation(window.location);
   }
 

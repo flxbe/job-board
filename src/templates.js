@@ -1,5 +1,6 @@
 export function renderDetailedJob(job, filterConfig, onGoBack) {
   const node = document.createElement("div");
+  node.classList.add("job-board-job-view");
 
   const coreAttributes =
     createCoreAttribute("Firma", job.company) +
