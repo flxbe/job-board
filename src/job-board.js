@@ -16,7 +16,13 @@ export default class JobBoard {
       this.updateLocation(event.target.location);
     });
 
+    this.resetRootNode();
     this.updateLocation(window.location);
+  }
+
+  resetRootNode() {
+    this.node.innerHTML = "";
+    this.node.classList.add("job-board");
   }
 
   goToJobView(jobId) {
@@ -36,7 +42,8 @@ export default class JobBoard {
 
   render(target) {
     const view = this.renderView(target);
-    this.mountView(view);
+    const viewContainer = wrapView(view);
+    this.mountView(viewContainer);
   }
 
   renderView(target) {
@@ -66,22 +73,11 @@ export default class JobBoard {
   }
 
   mountView(view) {
-    this.node.innerHTML = "";
-    this.node.classList.add("job-board");
-
-    const container = document.createElement("div");
-    container.classList.add("jb-container");
-    container.appendChild(view.node);
-
-    this.node.appendChild(container);
-
-    /*
     if (this.view) {
-      this.view.node.replaceWith(view.node);
+      this.view.replaceWith(view);
     } else {
-      this.node.appendChild(view.node);
+      this.node.appendChild(view);
     }
-    */
 
     this.view = view;
   }
@@ -125,4 +121,12 @@ function parseQuery(queryString) {
   }
 
   return query;
+}
+
+function wrapView(view) {
+  const container = document.createElement("div");
+  container.classList.add("jb-container");
+  container.appendChild(view.node);
+
+  return container;
 }
