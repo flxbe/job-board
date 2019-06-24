@@ -61,3 +61,24 @@ export function getFirstJob(board) {
 export function getJobFilterAttributes(jobNode) {
   return jobNode.querySelectorAll(".job-board-job-filter-attribute");
 }
+
+export function getDetailedJobTitle(node) {
+  return node.querySelector(".job-board-job-detailed .job-board-job-title")
+    .textContent;
+}
+
+export function getDetailedJobFilterAttributes(node) {
+  return node.querySelectorAll(
+    ".job-board-job-detailed .job-board-filter-attribute"
+  );
+}
+
+export function getDetailedJobCoreAttributes(node) {
+  return node.querySelectorAll(
+    ".job-board-job-detailed .job-board-core-attribute"
+  );
+}
+
+export function getDetailedJobCtaButton(node) {
+  return node.querySelector(".job-board-job-cta-button");
+}

@@ -10,7 +10,7 @@ export function renderDetailedJob(job, filterConfig, onGoBack) {
   const filterAttributes = filterConfig
     .map(filterItem => {
       if (job[filterItem.key]) {
-        return `<h6 class="jb-text-dark">${
+        return `<h6 class="jb-text-dark job-board-filter-attribute">${
           filterItem.title
         } <span class="jb-font-weight-light">${
           job[filterItem.key]
@@ -28,7 +28,7 @@ export function renderDetailedJob(job, filterConfig, onGoBack) {
       href = job.callToAction.link;
     }
 
-    ctaButton = `<a class="jb-btn jb-btn-secondary" href="${href}" target="blank_">${
+    ctaButton = `<a class="jb-btn jb-btn-secondary job-board-job-cta-button" href="${href}" target="blank_">${
       job.callToAction.name
     }</a>`;
   }
@@ -38,8 +38,8 @@ export function renderDetailedJob(job, filterConfig, onGoBack) {
         <nav class="jb-mb-4">
           <a href="#"><h5 class="jb-font-weight-light">Zurück</h5></a>
         </nav>
-        <div class="jb-bg-light jb-rounded jb-shadow-sm jb-p-3 jb-p-sm-4 jb-p-lg-5">
-          <h2 class="jb-text-dark jb-font-weight-light jb-mb-4">${
+        <div class="jb-bg-light jb-rounded jb-shadow-sm jb-p-3 jb-p-sm-4 jb-p-lg-5 job-board-job-detailed">
+          <h2 class="jb-text-dark jb-font-weight-light jb-mb-4 job-board-job-title">${
             job.title
           }</h5>
           <div class="jb-mb-3">
@@ -69,7 +69,7 @@ export function renderDetailedJob(job, filterConfig, onGoBack) {
 function createCoreAttribute(name, value) {
   return `
     <div class="jb-d-inline-block jb-bg-white jb-rounded jb-shadow-sm jb-py-2 jb-px-3 jb-mt-2">
-      <h6 class="jb-text-dark jb-mb-0">
+      <h6 class="jb-text-dark jb-mb-0 job-board-core-attribute">
         ${name}
         </br>
         <span class="jb-font-weight-light jb-text-primary">${value}</span>
