@@ -1,4 +1,5 @@
-import { mountJobBoard, getFilterContainer, getJobList } from "./page";
+import { mount } from "../src/index.js";
+import { getFilterContainer, getJobList } from "./page";
 
 describe("Mounting the job filter", () => {
   test("should add the filter to the DOM", async () => {
@@ -17,3 +18,12 @@ describe("Mounting the job filter", () => {
     expect(jobListNode).not.toBeNull();
   });
 });
+
+export async function mountJobBoard({ filters, jobs } = {}) {
+  filters = filters || [];
+  jobs = jobs || [];
+
+  const node = document.createElement("div");
+  await mount(node, { filters, jobs });
+  return node;
+}

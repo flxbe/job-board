@@ -10,7 +10,7 @@ module.exports = {
   extends: ["eslint:recommended", "prettier"],
   overrides: [
     {
-      files: ["**/*.test.js", "**/*.spec.js", "**/*.test.template.js"],
+      files: ["tests/**/*.js"],
       env: {
         jest: true
       }

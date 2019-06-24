@@ -1,21 +1,49 @@
-import { mount } from "../src/index.js";
+import Location from "../src/location.js";
+import JobBoard from "../src/job-board.js";
 
-export async function mountJobBoard({ filters, jobs } = {}) {
+export function createJobBoard({ filters, jobs, onNavigate, location } = {}) {
   filters = filters || [];
   jobs = jobs || [];
+  onNavigate = onNavigate || jest.fn();
+  location = location || Location.toFilterView();
 
-  const node = document.createElement("div");
-  await mount(node, { filters, jobs });
-  return node;
+  const rootNode = document.createElement("div");
+  const board = new JobBoard(rootNode, jobs, filters, onNavigate, location);
+
+  return {
+    filters,
+    jobs,
+    onNavigate,
+    location,
+
+    rootNode,
+    board
+  };
+}
+
+export function selectJob(board, index) {
+  const nodes = board.node.querySelectorAll(".job-board-job");
+  const jobNode = nodes[index];
+  jobNode.click();
+}
+
+export function isOnFilterView(board) {
+  const node = board.node.querySelector("#job-board-filter-view");
+  return node !== null;
+}
+
+export function isOnJobView(board) {
+  const node = board.node.querySelector("#job-board-job-view");
+  return node !== null;
+}
+
+export function getFilterNodes(board) {
+  const filterContainer = getFilterContainer(board.node);
+  return filterContainer.children;
 }
 
 export function getFilterContainer(node) {
   return node.querySelector("#job-board-filter-container");
-}
-
-export function getFilterNodes(board) {
-  const filterContainer = getFilterContainer(board);
-  return filterContainer.children;
 }
 
 export function getFilterTitle(filter) {
@@ -26,8 +54,8 @@ export function getJobList(node) {
   return node.querySelector("#job-board-job-list");
 }
 
-export function getFirstJob(node) {
-  return node.querySelector(".job-board-job");
+export function getFirstJob(board) {
+  return board.node.querySelector(".job-board-job");
 }
 
 export function getJobFilterAttributes(jobNode) {
