@@ -6,7 +6,6 @@ import {
   getDetailedJobCoreAttributes,
   getDetailedJobCtaButton
 } from "./page";
-import { JestEnvironment } from "@jest/environment";
 
 describe("Rendering the job detailed", () => {
   test("should render the title", () => {
